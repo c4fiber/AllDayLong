@@ -1,12 +1,21 @@
 plugins {
 	id 'org.springframework.boot' version '2.6.4'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id "com.github.node-gradle.node" version "3.2.1"
 	id 'java'
+}
+
+node {
+	version = '14.17.3'
+	npmVersion = '6.14.13'
+	workDir = file("./src/frontend")
+	npmWorkDir = file("./src/frontend")
+	nodeModulesDir = file("./src/frontend")
 }
 
 group = 'com'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
+sourceCompatibility = '15'
 
 repositories {
 	mavenCentral()
@@ -28,3 +37,17 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+task setUp(type: NpmTask) {
+	description = "Install Node.js package"
+	args = ['install']
+	inputs.files file('package.json')
+	outputs.files file('node_modules')
+}
+
+task buildFrontEnd(type: NpmTask, dependsOn: setUp) {
+	description = "Build vue.js"
+	args = ['run', 'build']
+}
+
+processResources.dependsOn 'buildFrontEnd'
