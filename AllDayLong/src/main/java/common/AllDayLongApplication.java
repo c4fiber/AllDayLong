@@ -21,5 +21,10 @@ public class AllDayLongApplication {
 	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
 		return String.format("Hello %s!", name);
 	}
+	
+	@GetMapping("/api/hello")
+	public String hello2() {
+		return "hello";
+	}
 
 }
