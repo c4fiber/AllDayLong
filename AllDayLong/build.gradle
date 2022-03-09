@@ -5,14 +5,6 @@ plugins {
 	id 'java'
 }
 
-node {
-	version = '14.17.3'
-	npmVersion = '6.14.13'
-	workDir = file("./src/frontend")
-	npmWorkDir = file("./src/frontend")
-	nodeModulesDir = file("./src/frontend")
-}
-
 group = 'com'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '15'
@@ -32,6 +24,14 @@ dependencies {
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'io.projectreactor:reactor-test'
+}
+
+node {
+	version = '14.17.3'
+	npmVersion = '6.14.13'
+	workDir = file("./src/frontend")
+	npmWorkDir = file("./src/frontend")
+	nodeModulesDir = file("./src/frontend")
 }
 
 tasks.named('test') {
