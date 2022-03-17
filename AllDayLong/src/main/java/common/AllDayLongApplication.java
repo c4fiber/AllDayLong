@@ -24,6 +24,7 @@ public class AllDayLongApplication {
 	
 	@GetMapping("/api/hello")
 	public String hello2() {
+    
 		return "index.html";
 	}
 
