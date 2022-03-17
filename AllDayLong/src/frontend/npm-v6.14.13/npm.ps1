@@ -9,6 +9,7 @@ if ($PSVersionTable.PSVersion -lt "6.0" -or $IsWindows) {
 }
 $ret=0
 if (Test-Path "$basedir/node$exe") {
+
   # Support pipeline input
   if ($MyInvocation.ExpectingInput) {
     $input | & "$basedir/node$exe"  "$basedir/node_modules/npm/bin/npm-cli.js" $args
@@ -23,6 +24,7 @@ if (Test-Path "$basedir/node$exe") {
   } else {
     & "node$exe"  "$basedir/node_modules/npm/bin/npm-cli.js" $args
   }
+
   $ret=$LASTEXITCODE
 }
 exit $ret
