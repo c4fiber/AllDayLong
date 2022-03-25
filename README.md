@@ -7,6 +7,5 @@ vector<int> schoolNumber = {201611815, 201510187, 201913051, 201913045, 20151312
 
 문제해결을 목표로 합니다.
 
-test for fetch upstream
+주제: 한국어 OCR SW
 
-주제: TBD
