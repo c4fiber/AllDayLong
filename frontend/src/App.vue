@@ -1,5 +1,6 @@
 <template>
-  <div id="app">
+  <v-app id="app">
+    <v-btn color="success">Success</v-btn>
     <div class="header">
       <home-view msg="기본 컴포넌트: HomeView"></home-view>
     </div>
@@ -7,7 +8,7 @@
     <div class="footer">
       <about-view></about-view>
     </div>
-  </div>
+  </v-app>
 </template>
 <script>
   import HomeView from './components/HomeView.vue'
