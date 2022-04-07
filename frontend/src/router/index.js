@@ -7,7 +7,7 @@ import AboutView from '@/components/AboutView'
 import UserAll from '@/components/UserAll'
 import UserInfo from '@/components/UserInfo'
 import HelloWorld from '@/components/HelloWorld'
-
+import ImageUpload from '@/components/ImageUpload'
 
 Vue.use(Router)
 
@@ -38,6 +38,11 @@ export default new Router({
       path: '/helloworld',
       name: 'HelloWorld',
       component: HelloWorld
+    },
+    {
+      path:'/upload',
+      name:'UploadImage',
+      component: ImageUpload
     }
 
   ]
