@@ -8,8 +8,7 @@ import LIST2JSON
 
 # input = image src
 # 텍스트박스가 그려진 이미지는 원본과 동일한 경로에 저장된다.
-# ex) test/img/demo.png -> test/img/ocred_demo.png
-
+# ex) ./TEST/demo.png -> ./TEST/ocred_demo.png
 def PlayOCR(input):
     # Easy OCR
     reader = easyocr.Reader(['ko'],
@@ -17,12 +16,16 @@ def PlayOCR(input):
                             user_network_directory='./model',
                             recog_network='custom')
     result = reader.readtext(input)
+    for i in result:
+        print(i[1])
+
+    #  output 저장을 위한 경로 설정
+    split_input = os.path.split(input)  # input의 경로와 파일명을 분할  //  [0]: 경로, [1]: 파일명
+    input_address = split_input[0], input_name = split_input[1]
+    output_image = input_address + "/ocred_" + input_name
 
     #  Draw TextBox with opencv
     img = cv2.imread(input)
-    splitedinput = os.path.split(input)  # input 이미지의 경로를 기준으로 분할
-    outputimage = splitedinput[0] + "/ocred_" + splitedinput[1]
-
     np.random.seed(42)
     COLORS = np.random.randint(0, 255, size=(255, 3), dtype="uint8")
 
@@ -35,15 +38,12 @@ def PlayOCR(input):
         color_idx = random.randint(0, 255)
         color = [int(c) for c in COLORS[color_idx]]
         img = cv2.rectangle(img, (x, y), (x + w, y + h), color, 2)
-    cv2.imwrite(outputimage, img)
-    cv2.waitKey(0)
-    for i in result:
-        print(i[1])
+    cv2.imwrite(output_image, img)
 
-    # List 형식으로 저장되어 있는 결과를 json으로 변환
-    LIST2JSON.tojson(result)
+    # List 형식으로 저장되어 있는 결과를 json으로 변환 , input
+    LIST2JSON.tojson(result, input_address + "/" + input_name + ".json")
 
 
 # import로 사용할 경우에는 이후 라인은 실행되지 않음. ModuleTest.py 참고
 if __name__ == '__main__':
-    PlayOCR("./testimg/demo.png")
+    PlayOCR("./TEST/demo.png")
