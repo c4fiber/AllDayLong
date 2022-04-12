@@ -1,7 +1,7 @@
 import json
 
 
-def tojson(list, file_path="./TEST/data.json"):
+def tojson(list, file_path="./data.json"):
     data = {}
     for i in range(len(list)):
         data[i] = list[i][1]

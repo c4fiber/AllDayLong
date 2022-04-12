@@ -21,7 +21,8 @@ def PlayOCR(input):
 
     #  output 저장을 위한 경로 설정
     split_input = os.path.split(input)  # input의 경로와 파일명을 분할  //  [0]: 경로, [1]: 파일명
-    input_address = split_input[0], input_name = split_input[1]
+    input_address = split_input[0]
+    input_name = split_input[1]
     output_image = input_address + "/ocred_" + input_name
 
     #  Draw TextBox with opencv
