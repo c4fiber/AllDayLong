@@ -11,13 +11,11 @@ def PlayOCR(image):
                             user_network_directory='./model',
                             recog_network='custom')
     result = reader.readtext(image)
-    for i in result:
-        print(i[1])
 
     # 텍스트박스 그리기
     DrawTextBox.Draw(image, result)
 
-    # List로 저장되어 있는 결과를 json으로 변환
+    # 결과 List를 json으로 변환
     json_path = os.path.dirname(image) + "/" + os.path.basename(image) + ".json"
     LIST2JSON.tojson(result, json_path)
 
