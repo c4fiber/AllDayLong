@@ -7,7 +7,7 @@ import LIST2JSON
 
 
 # input = image src
-# 텍스트박스가 그려진 이미지는 원본과 동일한 경로에 저장된다.
+# 텍스트박스가 그려진 결과는 원본과 동일한 경로에 저장된다.
 # ex) ./TEST/demo.png -> ./TEST/ocred_demo.png
 def PlayOCR(input):
     # Easy OCR
@@ -38,12 +38,12 @@ def PlayOCR(input):
         color_idx = random.randint(0, 255)
         color = [int(c) for c in COLORS[color_idx]]
         img = cv2.rectangle(img, (x, y), (x + w, y + h), color, 2)
+
     cv2.imwrite(output_image, img)
 
     # List 형식으로 저장되어 있는 결과를 json으로 변환 , input
     LIST2JSON.tojson(result, input_address + "/" + input_name + ".json")
 
 
-# import로 사용할 경우에는 이후 라인은 실행되지 않음. ModuleTest.py 참고
 if __name__ == '__main__':
     PlayOCR("./TEST/demo.png")
