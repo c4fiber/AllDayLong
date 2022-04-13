@@ -9,8 +9,8 @@ pip install easyocr
 
 ### How to use?
 ````
-python >python RunOCR.py 주소
-ex) >python RunOCR.py ./TEST/demo.png
+python RunOCR.py 이미지 주소
+ex) python RunOCR.py ./TEST/demo.png
 ````
 
 
