@@ -1,4 +1,5 @@
 import os
+import sys
 import easyocr
 import LIST2JSON
 import DrawTextBox
@@ -20,6 +21,7 @@ def PlayOCR(image):
     LIST2JSON.tojson(result, json_path)
 
 
-# 모듈로 호출 시 아래는 실행되지 않음
 if __name__ == '__main__':
-    PlayOCR("./TEST/demo.png")
+    image_path = sys.argv[1]  # 명령행 인자받기
+    PlayOCR(image_path)
+    # PlayOCR("./TEST/demo.png")
