@@ -17,23 +17,27 @@
       <p>
         <strong>Members</strong><br>
         <ul>
-          <li><strong>팀장</strong> 신병철 : Project Manage, AI Development</li>
-          <li><strong>팀원</strong> 이기원 : AI Development, Back-end</li>
-          <li><strong>팀원</strong> 황현섭 : Back-end</li>
-          <li><strong>팀원</strong> 조진훈 : Front-end</li>
-          <li><strong>팀원</strong> 조경서 : Front-end</li>
+          <li><strong>팀장</strong> 신병철 : Project Manager, AI Model Developer</li>
+          <li><strong>팀원</strong> 이기원 : AI Model Developer, Back-end Developer</li>
+          <li><strong>팀원</strong> 황현섭 : Back-end Developer</li>
+          <li><strong>팀원</strong> 조진훈 : Front-end Developer</li>
+          <li><strong>팀원</strong> 조경서 : Front-end Developer</li>
         </ul>
       </p>
     </div>
     <div id="practice-ocr" class="my-10">
       <h2>TEST</h2>
-      <div id="ocr-container" class="pa-4">
-        <p class="how_to_do_OCR">
-          해당 위치에 사진을 드래그&드랍하거나 클릭하시면 이미지 업로드가 가능합니다.<br>
-          하단의 샘플이미지를 선택하셔서 OCR을 체험하실 수 있습니다.
-        </p>
-        <img id="ocrLogo" src="../assets/image/TryOCR.png">
-      </div>
+      <input id="file-input" type="file" style="display: none">
+        <label for="file-input">
+          <div id="ocr-container" class="drop-zone" style="padding: 20px">
+            <p class="how_to_do_OCR">
+              해당 위치에 사진을 드래그&드랍하거나 클릭하시면 이미지 업로드가 가능합니다.<br>
+              하단의 샘플이미지를 선택하셔서 OCR을 체험하실 수 있습니다.
+            </p>
+            <img id="ocrLogo" src="../assets/image/TryOCR.png">
+          </div>
+        </label>
+      </input>
       <div>
         <v-container id="sample-images" class="pa-4 my-10">
           <!-- 동적 그리드를 활용하여 하단에 샘플 사진 리스트 출력 -->
@@ -44,6 +48,8 @@
 </template>
 
 <script>
+import DragAndDrop from '../assets/js/DragAndDrop'
+
 export default {
   name: 'HomeView',
   props: {
@@ -74,5 +80,10 @@ export default {
   #sample-images {
     border: 3px solid lightskyblue;
     text-align: center;
+  }
+
+  /* Drag and Drop */
+  .drop-zone-dragstart, .drop-zone-drop {
+    background-color: lightgreen;
   }
 </style>

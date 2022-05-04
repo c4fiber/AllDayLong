@@ -121,9 +121,9 @@ export default {
         action: 'mdi-apple',
         leftmenus: [
           {title: 'Create', to: '/create'},
-          {title: 'Read', to: '/helloworld'},
-          {title: 'TryOCR', to: 'tryocr'},
-          {title: 'Delete'}
+          {title: 'Hello', to: '/helloworld'},
+          {title: 'TryOCR', to: '/tryocr'},
+          {title: 'ImageUpload', to: '/upload'}
         ],
         title: 'Function1'
       },

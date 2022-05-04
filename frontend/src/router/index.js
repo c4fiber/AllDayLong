@@ -9,6 +9,7 @@ import UserInfo from '@/components/UserInfo'
 import HelloWorld from '@/components/HelloWorld'
 import CreateView from '@/components/CreateView'
 import TryOcr from '@/components/TryOcr'
+import ImageUpload from '@/components/ImageUpload'
 
 Vue.use(Router)
 
@@ -49,6 +50,11 @@ export default new Router({
       path: '/tryocr',
       name: 'TryOcr',
       component: TryOcr
+    },
+    {
+      path:'/upload',
+      name:'UploadImage',
+      component: ImageUpload
     }
   ]
 })
