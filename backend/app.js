@@ -44,7 +44,6 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
-
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
@@ -55,6 +54,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
 
 module.exports = app;
