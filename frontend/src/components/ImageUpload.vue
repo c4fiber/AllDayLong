@@ -1,3 +1,4 @@
+
 <template>
 <div>
     <h2>이미지 업로드 구현</h2>
@@ -5,25 +6,25 @@
     <hr>
     <br>
     <form @change="onFileSelected">
-        <input type="file" name="file" id="input-files">
+        <input type="file"" name="file" id="input-files">
         <label for="file" >Choose file</label>
         <input type="submit" value="Submit"  @click="onUpload">
     </form> 
 
-
 </div>
+
 </template>
 <script>
 
     import axios from 'axios';
-
 export default{
     name:"ImageUpload",
     data(){
         return{
-            selectedFile:null
+            users: []
         };
-    },
+    },   
+
     methods:{
         onFileSelected(event){
             this.selectedFile=event.target.files[0]
@@ -33,11 +34,10 @@ export default{
             fd.append('file',this.selectedFile)
             axios.post('http://localhost:3000/upload',fd)
             .then(res =>{
-                console.log(res)
-            });
+                console.log(res);
+                 });
+            }
         }
-        
-    }
 };
 
   
@@ -51,6 +51,11 @@ export default{
     button{
         background-color:yellow;
     }
-
+    .user {
+        float: left;
+        border: 2px solid black;
+        padding: 15px;
+        margin: 20px;
+    }
 </style>
 
