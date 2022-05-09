@@ -2,13 +2,10 @@ var express = require('express');
 var router = express.Router();
 var imgModel = require('../dbschema/schema');
 var multer = require('multer');
-var dbconfig = require('../config/db');
-var mongoose = require('mongoose');
 var imagebaseURL = "http://localhost:3000/uploadedImages/";
 var imagefolderpath = "../public/uploadedImages/";
 
-var app     = express();
-
+let testfilename;
 //image upload
 
 var storage = multer.diskStorage({
@@ -56,31 +53,59 @@ router.post('/',(req,file,res)=>{
     uploadedimage(req,res,(err) => {
      
       if (err) {
-        return console.log("hello world") ;
+        return console.log("please check the file extension") ;
     } else {
       if (req.file == undefined) {
         return console.log("please select a file") ;
       }else{
-       console.log(req.file) ;
-      }
-    }
-  });
-});
+      console.log(req.file) ;
+        
+      var spawn = require('child_process').spawn;
+      var net = spawn('python',['./RunOCR.py',imagefolderpath + req.file.filename], {cwd: './ocr-with-python'});
+      net.stdout.on('data',function(data){
+      
+        console.log('not err');
+      })
+        net.stderr.on('data',function(data){
+      
+        console.log('err occured: '+ data);
+        console.log('-------------------');
+        
+      })
+      net.on('exit', function(){
+        testfilename=req.file.filename;
+        console.log(testfilename);
+        
 
+        
+
+      });
+      
+      }
+
+    }  
+
+  });
+
+       
+       
+
+
+
+  
+});
 
 
 
 ////////////////////////////////////////////////////
 // Get 관련
 
+
 router.get('/',(req,res,next)=>{
-  imgModel.find()
-    .exec()
-    .then(docs =>{
-        console.log(docs);
-        })
-
-
+  var test = require(imagefolderpath+testfilename+".json");
+  var test2=[imagebaseURL+"ocred_"+testfilename];
+  res.json({test,test2});
+  console.log(testfilename);
 });
 
 

@@ -8,7 +8,7 @@ import UserAll from '@/components/UserAll'
 import UserInfo from '@/components/UserInfo'
 import HelloWorld from '@/components/HelloWorld'
 import ImageUpload from '@/components/ImageUpload'
-
+import DisplayOCR from '@/components/DisplayOCR'
 Vue.use(Router)
 
 export default new Router({
@@ -43,6 +43,11 @@ export default new Router({
       path:'/upload',
       name:'UploadImage',
       component: ImageUpload
+    },
+    {
+      path:'/display',
+      name:'DisplayOCR',
+      component:DisplayOCR
     }
 
   ]
