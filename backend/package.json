@@ -11,7 +11,9 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "material-design-icons-iconfont": "^6.5.0",
+    "mongoose": "^6.3.2",
     "morgan": "~1.9.1",
+    "multer": "^1.4.4",
     "pug": "2.0.0-beta11",
     "vue-toc": "^0.0.2"
   },
