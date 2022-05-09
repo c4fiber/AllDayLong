@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import os
 import sys
 import easyocr
@@ -25,6 +24,4 @@ def PlayOCR(image):
 if __name__ == '__main__':
     image_path = sys.argv[1]  # 명령행 인자받기
     PlayOCR(image_path)
-    #PlayOCR("./TEST/demo.png")
-
-
+    # PlayOCR("./TEST/demo.png")
