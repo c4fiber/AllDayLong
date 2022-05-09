@@ -16,34 +16,34 @@ var storage = multer.diskStorage({
         cb(null,'./public/uploadedImages')
     },
     filename: function(req,file,cb){
-      var date = Date.now();
-      var filename = date +'-'+ file.originalname;
-      cb(null,filename);
-           
-      var newimagedata = new imgModel({
-        name:filename,
-        imgpath:imagebaseURL + filename,
-        syncTime:date,
-        imgfolderpath: imagefolderpath + file.originalname
-      });
-      newimagedata.save(function(error,data){
-        if(error){
-          console.log(error);
-        }else{
-          console.log('Saved!');
-        }
-      });
+        var date = Date.now();
+        var filename = date +'-'+ file.originalname;
+        cb(null,filename);
+
+        var newimagedata = new imgModel({
+            name:filename,
+            imgpath:imagebaseURL + filename,
+            syncTime:date,
+            imgfolderpath: imagefolderpath + file.originalname
+        });
+        newimagedata.save(function(error,data){
+            if(error){
+                console.log(error);
+            }else{
+                console.log('Saved!');
+            }
+        });
     }
-  });
-  var fileFilter = (req, file, cb) => {
+});
+var fileFilter = (req, file, cb) => {
     if (file.mimetype==='image/jpeg'|| file.mimetype==='image/png' || file.mimetype ==='image/jpg' ) {
-   
-    cb(null, true);
-   
+
+        cb(null, true);
+
     } else {
-    cb(null, false);
+        cb(null, false);
     }
-   };
+};
 var uploadedimage = multer({storage: storage,fileFilter: fileFilter }).single("file");
 
 
@@ -52,19 +52,19 @@ var uploadedimage = multer({storage: storage,fileFilter: fileFilter }).single("f
 // Post 관련
 
 router.post('/',(req,file,res)=>{
-    
+
     uploadedimage(req,res,(err) => {
-     
-      if (err) {
-        return console.log("hello world") ;
-    } else {
-      if (req.file == undefined) {
-        return console.log("please select a file") ;
-      }else{
-       console.log(req.file) ;
-      }
-    }
-  });
+
+        if (err) {
+            return console.log("hello world") ;
+        } else {
+            if (req.file == undefined) {
+                return console.log("please select a file") ;
+            }else{
+                console.log(req.file) ;
+            }
+        }
+    });
 });
 
 
@@ -74,10 +74,10 @@ router.post('/',(req,file,res)=>{
 // Get 관련
 
 router.get('/',(req,res,next)=>{
-  imgModel.find()
-    .exec()
-    .then(docs =>{
-        console.log(docs);
+    imgModel.find()
+        .exec()
+        .then(docs =>{
+            console.log(docs);
         })
 
 

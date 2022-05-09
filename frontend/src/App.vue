@@ -58,32 +58,48 @@
       mobile-breakpoint="960"
     >
       <!-- 메뉴 리스트 -->
-      <v-list>
-        <v-list-group
-          v-for="leftmenu in leftmenus"
-          :key="leftmenu.title"
-          v-model="leftmenu.active"
-          :prepend-icon="leftmenu.action"
-          no-action
-        >
-          <template v-slot:activator>
-            <v-list-item-content>
-              <v-list-item-title v-text="leftmenu.title"></v-list-item-title>
-            </v-list-item-content>
-          </template>
+       <v-list>
+         <v-list-item
+           v-for="leftmenu in leftmenus"
+           :key="leftmenu.title"
+           link
+           :to="leftmenu.to"
+         >
+           <v-list-item-icon>
+             <v-icon v-text="leftmenu.icon"></v-icon>
+            </v-list-item-icon>
+           <v-list-item-content>
+             <v-list-item-title v-text="leftmenu.title"></v-list-item-title>
+           </v-list-item-content>
+         </v-list-item>
+       </v-list>
 
-          <v-list-item
-            v-for="leftsubmenu in leftmenu.leftmenus"
-            :key="leftsubmenu.title"
-            link
-            :to="leftsubmenu.to"
-          >
-            <v-list-item-content>
-              <v-list-item-title v-text="leftsubmenu.title"></v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-      </v-list-group>
-      </v-list>
+<!--      <v-list>-->
+<!--        <v-list-group-->
+<!--          v-for="leftmenu in leftmenus"-->
+<!--          :key="leftmenu.title"-->
+<!--          v-model="leftmenu.active"-->
+<!--          :prepend-icon="leftmenu.action"-->
+<!--          no-action-->
+<!--        >-->
+<!--          <template v-slot:activator>-->
+<!--            <v-list-item-content>-->
+<!--              <v-list-item-title v-text="leftmenu.title"></v-list-item-title>-->
+<!--            </v-list-item-content>-->
+<!--          </template>-->
+
+<!--          <v-list-item-->
+<!--            v-for="leftsubmenu in leftmenu.leftmenus"-->
+<!--            :key="leftsubmenu.title"-->
+<!--            link-->
+<!--            :to="leftsubmenu.to"-->
+<!--          >-->
+<!--            <v-list-item-content>-->
+<!--              <v-list-item-title v-text="leftsubmenu.title"></v-list-item-title>-->
+<!--            </v-list-item-content>-->
+<!--          </v-list-item>-->
+<!--      </v-list-group>-->
+<!--      </v-list>-->
     </v-navigation-drawer>
 
     <!-- 메인 content 위치 -->
@@ -108,46 +124,15 @@
 export default {
   data: () => ({
     drawer: null,
+
     leftmenus: [
-      {
-        action: 'mdi-information',
-        leftmenus: [
-          {title: 'Introduction', to: '/about'},
-          {title: 'Developers', to: '/users'}
-        ],
-        title: 'About ORCA'
-      },
-      {
-        action: 'mdi-apple',
-        leftmenus: [
-          {title: 'Create', to: '/create'},
-          {title: 'Hello', to: '/helloworld'},
-          {title: 'TryOCR', to: '/tryocr'},
-          {title: 'ImageUpload', to: '/upload'}
-        ],
-        title: 'Function1'
-      },
-      {
-        action: 'mdi-ipod',
-        leftmenus: [
-          {title: 'Create'},
-          {title: 'Read'},
-          {title: 'Update'},
-          {title: 'Delete'}
-        ],
-        title: 'Function2'
-      },
-      {
-        action: 'mdi-palette',
-        leftmenus: [
-          {title: 'Create'},
-          {title: 'Read'},
-          {title: 'Update'},
-          {title: 'Delete'}
-        ],
-        title: 'Function3'
-      }
+      {title: 'Developers', icon: 'mdi-account-multiple', to: '/users'},
+      {title: '예제1', icon: 'mdi-apple', to: '/create'},
+      {title: '예제2', icon: 'mdi-ipod', to: '/helloworld'},
+      {title: 'TryOCR', icon: 'mdi-plus-thick', to: '/tryocr'},
+      {title: 'ImageUpload', icon: 'mdi-image-plus', to: '/upload'}
     ],
+
     languages: [
       {title: 'Korean'},
       {title: 'English'}
