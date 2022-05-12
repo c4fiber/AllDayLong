@@ -1,10 +1,9 @@
 <template>
     <div class="users">
         <div v-for="(user, index) in users" :key="index" class="user">
-            <h2>Developer {{ index+1 }}</h2>
+            <h2>접속한 유저 {{ index+1 }}</h2>
             <p>아이디: {{ user.id }} </p>
             <p>이름: {{ user.name }} </p>
-            <p>역할: {{ user.role }}</p>
         </div>
     </div>
 </template>
