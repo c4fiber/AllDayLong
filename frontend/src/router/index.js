@@ -10,6 +10,7 @@ import HelloWorld from '@/components/HelloWorld'
 import CreateView from '@/components/CreateView'
 import TryOcr from '@/components/TryOcr'
 import ImageUpload from '@/components/ImageUpload'
+import DisplayOCR from '@/components/DisplayOCR'
 
 Vue.use(Router)
 
@@ -55,6 +56,11 @@ export default new Router({
       path:'/upload',
       name:'UploadImage',
       component: ImageUpload
+    },
+    {
+      path:'/display',
+      name:'DisplayOCR',
+      component:DisplayOCR
     }
   ]
 })

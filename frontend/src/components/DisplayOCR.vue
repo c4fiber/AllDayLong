@@ -30,14 +30,7 @@ export default {
         this.$http.get('/api/upload')
         .then((res) => {
             this.ocrtext = res.data.test;
-        })
-        .catch((err) => {
-            console.error(err);
-        });
-        this.$http.get('/api/upload')
-        .then((res) => {
-            this.images = res.data.test2;
-            
+            this.images=res.data.test2;
         })
         .catch((err) => {
             console.error(err);
