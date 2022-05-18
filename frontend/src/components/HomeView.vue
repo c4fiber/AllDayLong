@@ -2,17 +2,18 @@
   <div id="home">
     <div id="orca-introduction" class="my-5">
       <h2>About ORCA</h2>
-      <p>
+      <p id="InText">
         ORCA is a Korean OCR Software.<br>
         The existing OCR software were specialized in English and Number,
         so it's hard to recognize Korean accurately.<br>
         And finally, we made a new Korean OCR engine.
       </p>
     </div>
+
     <div id="team-introduction" class="my-10">
       <h2>About TEAM</h2>
-      <p>
         <strong>Team AllDayLong</strong><br>
+      <p id="InText">
         : 하루종일 밤낮 가리지 않고 작업한다는 뜻
       <p>
         <strong>Members</strong><br>
@@ -26,28 +27,30 @@
       </p>
     </div>
     <div id="practice-ocr" class="my-10">
-      <h2>TEST</h2>
+      <h2>Try OCRA by your image</h2>
+      <p id="InText"> Select image from your device and submit.</p>
 
       <!-- 샘플 리스트 container -->
       <div class="pa-4">
-        <v-container id="sample-images">
-          OCR 샘플 이미지 파일들을 display할 Grid<br>
-          동적 그리드 활용
+        <v-container id="sample-images" >
+          <div><img id="OcrSampleImages" src="" alt="ocr example"></div>
         </v-container>
       </div>
 
       <!-- 실제 TEST container -->
       <div id="testOCR" class="pa-4">
         <form @change="onFileSelected">
+          <!-- mobile 버전 -->
+          <mq-layout :mq="['sm', 'md']">
           <v-container id="add-image">
             <input id="file-input" type="file" style="display: none">
             <label for="file-input">
 
-              <!-- 성공한 버전 -->
-              <div id="img-container" class="drop-zone" style="padding: 10px"> image select</div>
-
-
-
+              <div class="mdi mdi-file-image-plus" id="img-container" style="padding: 10px"> image select</div>
+            </label>
+            </input>
+          </v-container>
+          </mq-layout>
 <!--              &lt;!&ndash; 현재 통합중인 Drag & Drop 기능 추가버전 &ndash;&gt;-->
 <!--              <div id="img-container">-->
 <!--                <picture-input-->
@@ -65,13 +68,9 @@
 <!--                  @change="onChange">-->
 <!--                </picture-input>-->
 <!--              </div>-->
-
-            </label>
-            </input>
-          </v-container>
-          <v-container id="submit-btn">
+          <!-- <v-container id="submit-btn">
             <input type="submit" value="Submit(임시) - 최종적으로는 해당버튼 삭제예정" @click="onUpload"/>
-          </v-container>
+          </v-container> -->
         </form>
       </div>
 
@@ -129,15 +128,25 @@ export default {
 </script>
 
 <style>
+  input[type="file"] {
+    cursor: pointer;
+  }
   h2 {
     font-size: 1.5em;
   }
+  strong {
+    color: rgba(0, 0, 0, 1);
+  }
   ul {
+    color: rgba(0, 0, 0, 0.65);
     list-style: none;
   }
   #img-container {
     border: 1px solid black;
+    border-radius: 4px;
     text-align: center;
+    width : 90%;
+    margin : 0 auto;
   }
 
   #ocrLogo {
@@ -148,8 +157,26 @@ export default {
     color: green;
     font-size: 1.5em;
   }
-  #sample-images, #submit-btn, #showResult {
-    border: 3px solid lightskyblue;
+  #submit-btn, #showResult {
+    border: 1px solid black;
+    height: 300px;
+    border-radius:4px;
     text-align: center;
+  }
+  #sample-images {
+    border: 1px solid black;
+    width : 90%;
+    border-radius:4px;
+    margin: 0 auto;
+  }
+  #OcrSampleImages{
+    padding-top: 56.25%;
+  }
+  #showResult{
+    width: 90%;
+  }
+  #InText{
+    color: rgba(0, 0, 0, 0.65);
+    margin-left: 10px;
   }
 </style>
