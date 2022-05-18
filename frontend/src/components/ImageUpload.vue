@@ -40,17 +40,8 @@ export default{
   }
 };
 
-
-
-
-
-
 </script>
 
 <style>
-button{
-  background-color:yellow;
-}
-
 </style>
 

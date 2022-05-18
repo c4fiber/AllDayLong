@@ -2,53 +2,20 @@
   <v-app>
     <!-- 상단 메뉴-->
     <v-app-bar app clipped-left>
+      <!-- 메뉴 버튼 -->
       <v-app-bar-nav-icon
         class="d-md-none d-lg-none d-xl-none"
         @click.stop="drawer = !drawer">
       </v-app-bar-nav-icon>
+
+      <!-- 로고 -->
       <a href="/"><img src="@/assets/image/ORCA.png" height="64px"></a>
       <v-spacer />
 
-      <v-btn text>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
+      <!-- Github -->
       <v-btn text href="https://github.com/c4fiber/AllDayLong">
         <v-icon>mdi-github</v-icon>
       </v-btn>
-<!--      &lt;!&ndash; 반응형 시 띄울 메뉴 icon&ndash;&gt;-->
-<!--      <v-menu offset-y>-->
-<!--        <template v-slot:activator="{on, attrs}">-->
-<!--          <v-btn-->
-<!--            text-->
-<!--            class=""-->
-<!--            v-bind="attrs"-->
-<!--            v-on="on"-->
-<!--          >-->
-<!--            <v-icon>mdi-dots-grid</v-icon>-->
-<!--          </v-btn>-->
-<!--        </template>-->
-<!--      </v-menu>-->
-
-      <!-- 다국어 -->
-      <v-menu offset-y>
-        <template v-slot:activator="{on, attrs}">
-          <v-btn
-            text
-            class=""
-            v-bind="attrs"
-            v-on="on"
-          >
-            <v-icon>mdi-translate</v-icon>
-          </v-btn>
-        </template>
-        <v-list>
-          <vlist-item
-            v-for="(language, index) in languages"
-            :key="index">
-            <v-list-item-title v-text="language.title">}</v-list-item-title>
-          </vlist-item>
-        </v-list>
-      </v-menu>
     </v-app-bar>
 
     <!-- 왼쪽 메뉴 -->
@@ -73,38 +40,13 @@
            </v-list-item-content>
          </v-list-item>
        </v-list>
-
-<!--      <v-list>-->
-<!--        <v-list-group-->
-<!--          v-for="leftmenu in leftmenus"-->
-<!--          :key="leftmenu.title"-->
-<!--          v-model="leftmenu.active"-->
-<!--          :prepend-icon="leftmenu.action"-->
-<!--          no-action-->
-<!--        >-->
-<!--          <template v-slot:activator>-->
-<!--            <v-list-item-content>-->
-<!--              <v-list-item-title v-text="leftmenu.title"></v-list-item-title>-->
-<!--            </v-list-item-content>-->
-<!--          </template>-->
-
-<!--          <v-list-item-->
-<!--            v-for="leftsubmenu in leftmenu.leftmenus"-->
-<!--            :key="leftsubmenu.title"-->
-<!--            link-->
-<!--            :to="leftsubmenu.to"-->
-<!--          >-->
-<!--            <v-list-item-content>-->
-<!--              <v-list-item-title v-text="leftsubmenu.title"></v-list-item-title>-->
-<!--            </v-list-item-content>-->
-<!--          </v-list-item>-->
-<!--      </v-list-group>-->
-<!--      </v-list>-->
     </v-navigation-drawer>
 
     <!-- 메인 content 위치 -->
     <v-main>
       <v-container>
+
+        <!-- Top 버튼 -->
         <v-btn
           fab dark fixed bottom right
           color="teal"
@@ -112,6 +54,7 @@
         >
           <v-icon>mdi-chevron-double-up</v-icon>
         </v-btn>
+
         <!-- router에 연결된 항목 출력 -->
         <router-view>
         </router-view>
@@ -126,16 +69,13 @@ export default {
     drawer: null,
 
     leftmenus: [
+      {title: 'Home', icon: 'mdi-home', to: '/'},
       {title: 'Developers', icon: 'mdi-account-multiple', to: '/users'},
-      {title: '예제1', icon: 'mdi-apple', to: '/create'},
-      {title: '예제2', icon: 'mdi-ipod', to: '/helloworld'},
-      {title: 'TryOCR', icon: 'mdi-plus-thick', to: '/tryocr'},
-      {title: 'ImageUpload', icon: 'mdi-image-plus', to: '/upload'}
-    ],
-
-    languages: [
-      {title: 'Korean'},
-      {title: 'English'}
+      {title: 'About', icon: 'mdi-help-box', to:'about'},
+      {title: 'ORCA\'s Strength' , icon: 'mdi-information', to: '/create'},
+      {title: 'Test(여기부턴 보류)', icon: 'mdi-plus-box', to: '/helloworld'},
+      {title: 'ImageUpload', icon: 'mdi-image-plus', to: '/upload'},
+      {title: 'DisplayOCR', icon: 'mdi-cast-variant', to: '/display'},
     ]
   })
 }

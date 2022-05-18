@@ -8,8 +8,8 @@ import UserAll from '@/components/UserAll'
 import UserInfo from '@/components/UserInfo'
 import HelloWorld from '@/components/HelloWorld'
 import CreateView from '@/components/CreateView'
-import TryOcr from '@/components/TryOcr'
 import ImageUpload from '@/components/ImageUpload'
+import DisplayOCR from '@/components/DisplayOCR'
 
 Vue.use(Router)
 
@@ -47,14 +47,14 @@ export default new Router({
       component: CreateView
     },
     {
-      path: '/tryocr',
-      name: 'TryOcr',
-      component: TryOcr
-    },
-    {
       path:'/upload',
       name:'UploadImage',
       component: ImageUpload
+    },
+    {
+      path:'/display',
+      name:'DisplayOCR',
+      component:DisplayOCR
     }
   ]
 })
