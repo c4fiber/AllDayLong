@@ -5,6 +5,10 @@ import App from './App'
 import router from './router'
 import axios from 'axios'
 
+// font, icon
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import '@mdi/font/css/materialdesignicons.css'
+
 // vuetify
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
@@ -19,7 +23,11 @@ Vue.prototype.$http = axios
 new Vue({
   el: '#app',
   router,
-  vuetify: new Vuetify(),
+  vuetify: new Vuetify({
+    icons: {
+      iconfont: 'md' || 'mdi'
+    }
+  }),
   components: { App },
   template: '<App/>'
 })
