@@ -13,7 +13,7 @@
     </div>
 
     <!-- 팀 소개 -->
-    <!-- 기존에 생성된 UserAll.vue(Developers 메뉴)에 이동하는 것을 고려 중
+    <!-- 기존에 생성된 UserAll.vue(Developers 메뉴)에 이동하는 것을 고려중
           (이에 추가로 내부 코드를 수정하여 아래의 내용을 해당 컴포넌트에 띄우는 것을 고려) -->
     <div id="team-introduction" class="my-10">
       <h2>About TEAM</h2>
