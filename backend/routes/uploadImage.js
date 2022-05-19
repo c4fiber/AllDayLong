@@ -107,7 +107,7 @@ router.get('/',(req,res,next)=>{
   res.json({test,test2});
  
   console.log(testfilename);
-  //testfilename=null;
+  testfilename=null;
 
 });
 
