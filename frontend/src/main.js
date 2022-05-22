@@ -6,7 +6,6 @@ import router from './router'
 import axios from 'axios'
 import VueMq from 'vue-mq'
 
-
 // font, icon
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import '@mdi/font/css/materialdesignicons.css'
@@ -15,11 +14,10 @@ import '@mdi/font/css/materialdesignicons.css'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 
-
 Vue.use(Vuetify)
 Vue.use(router)
 
-// vueMq
+// vue Media-Query(반응형)
 Vue.use(VueMq, {
   breakpoints: { // default breakpoints - customize this
     sm: 450,
@@ -27,7 +25,6 @@ Vue.use(VueMq, {
     lg: Infinity,
   }
   //defaultBreakpoint: 'sm'
-
 })
 
 Vue.config.productionTip = false
