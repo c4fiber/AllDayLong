@@ -2,19 +2,16 @@
 <div>
     <div class="ocrtext">
         <div v-for="(text, index) in ocrtext" :key="index" class="user">
-           
             <p>{{ text }} </p><br>
          </div>
-
-   
     </div>
 
     <div class="images">
-    <br> 
+    <br>
         <div v-for="(imageurl, index2) in images" :key="index2" class="image">
             <img :src=imageurl alt="imageOCR"/>
         </div>
-    </div> 
+    </div>
 </div>
 </template>
 
@@ -30,21 +27,13 @@ export default {
         this.$http.get('/api/upload')
         .then((res) => {
             this.ocrtext = res.data.test;
-        })
-        .catch((err) => {
-            console.error(err);
-        });
-        this.$http.get('/api/upload')
-        .then((res) => {
-            this.images = res.data.test2;
-            
+            this.images=res.data.test2;
         })
         .catch((err) => {
             console.error(err);
         });
     }
-
-}   
+}
 </script>
 
 <style>
