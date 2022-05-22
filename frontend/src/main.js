@@ -15,8 +15,10 @@ import '@mdi/font/css/materialdesignicons.css'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 
+
 Vue.use(Vuetify)
 Vue.use(router)
+
 // vueMq
 Vue.use(VueMq, {
   breakpoints: { // default breakpoints - customize this
@@ -25,6 +27,7 @@ Vue.use(VueMq, {
     lg: Infinity,
   }
   //defaultBreakpoint: 'sm'
+
 })
 
 Vue.config.productionTip = false
