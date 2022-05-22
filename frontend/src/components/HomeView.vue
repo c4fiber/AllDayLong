@@ -4,7 +4,7 @@
     <!-- AboutView.vue(About 메뉴)로 이동하는 것을 고려 중 -->
     <div id="orca-introduction" class="my-5">
       <h2>About ORCA</h2>
-      <p>
+      <p id="InText">
         ORCA is a Korean OCR Software.<br>
         The existing OCR software were specialized in English and Number,
         so it's hard to recognize Korean accurately.<br>
@@ -17,8 +17,8 @@
           (이에 추가로 내부 코드를 수정하여 아래의 내용을 해당 컴포넌트에 띄우는 것을 고려) -->
     <div id="team-introduction" class="my-10">
       <h2>About TEAM</h2>
-      <p>
-        <strong>Team AllDayLong</strong><br>
+      <strong>Team AllDayLong</strong><br>
+      <p id="InText">
         : 하루종일 밤낮 가리지 않고 작업한다는 뜻
       <p>
         <strong>Members</strong><br>
@@ -34,7 +34,8 @@
 
     <!-- 실제 TEST container -->
     <div id="practice-ocr" class="my-10">
-      <h2>TEST</h2>
+      <h2>Try ORCA by your image</h2>
+      <p id="InText"> Select image from your device and submit.</p>
 
       <!-- Drag&Drop 기능 구현된 PC버전 -->
       <div id="img-container-pc" class="pa-10 my-5" @change="onFileSelected">
@@ -54,18 +55,15 @@
       <!-- 모바일 버전 -->
       <div id="img-container-mobile" class="pa-4 my-5">
         <form @change="onFileSelected">
+          <mq-layout :mq="['sm', 'md']">
           <v-container>
             <input id="file-input" type="file" style="display: none">
             <label for="file-input">
-              <div style="padding: 20px">
-                <p class="how_to_do_OCR">
-                  해당 화면을 클릭하시면 이미지 업로드가 가능합니다.
-                </p>
-                <img id="ocrLogo" src="../assets/image/TryOCR.png">
-              </div>
+              <div class="mdi mdi-file-image-plus" id="img-container" style="padding: 10px">Image select</div>
             </label>
             </input>
           </v-container>
+          </mq-layout>
         </form>
       </div>
 
@@ -154,15 +152,47 @@ export default {
     font-size: 1.5em;
   }
   ul {
+    color: rgba(0, 0, 0, 0.65); // 추가된 부분
     list-style: none;
   }
 
+  input[type="file"] {
+    cursor: pointer;
+  }
+  
   /* 입력 & 출력 div */
+  /* 기존 버전 */
   #img-container-pc, #img-container-mobile, #submit-btn, #showResult {
     border: 3px solid lightskyblue;
     text-align: center;
   }
 
+  /* 입력 버전 */
+  #img-container {
+    border: 1px solid black;
+    border-radius: 4px;
+    text-align: center;
+    width : 90%;
+    margin : 0 auto;
+  }
+  
+  #submit-btn, #showResult {
+    border: 1px solid black;
+    height: 300px;
+    border-radius:4px;
+    text-align: center;
+  }
+  
+  #showResult{
+    width: 90%;
+  }
+  
+  #InText{
+    color: rgba(0, 0, 0, 0.65);
+    margin-left: 10px;
+  }
+  
+  /* 공통(기존, input) 부분 */
   #ocrLogo {
     height: 200px;
     width: 200px;
