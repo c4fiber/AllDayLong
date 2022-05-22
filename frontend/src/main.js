@@ -18,12 +18,16 @@ import 'vuetify/dist/vuetify.min.css'
 
 Vue.use(Vuetify)
 Vue.use(router)
+
+// vueMq
 Vue.use(VueMq, {
-  breakpoints: { 
-    sm: 480,
-    md: 900,
-    desktop: Infinity,
+  breakpoints: { // default breakpoints - customize this
+    sm: 450,
+    md: 960,
+    lg: Infinity,
   }
+  //defaultBreakpoint: 'sm'
+
 })
 
 Vue.config.productionTip = false

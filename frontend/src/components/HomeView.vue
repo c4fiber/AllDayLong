@@ -1,10 +1,8 @@
 <template>
   <div id="home">
-    <!-- About 소개 -->
-    <!-- AboutView.vue(About 메뉴)로 이동하는 것을 고려 중 -->
     <div id="orca-introduction" class="my-5">
       <h2>About ORCA</h2>
-      <p>
+      <p id="InText">
         ORCA is a Korean OCR Software.<br>
         The existing OCR software were specialized in English and Number,
         so it's hard to recognize Korean accurately.<br>
@@ -12,13 +10,10 @@
       </p>
     </div>
 
-    <!-- 팀 소개 -->
-    <!-- 기존에 생성된 UserAll.vue(Developers 메뉴)에 이동하는 것을 고려중
-          (이에 추가로 내부 코드를 수정하여 아래의 내용을 해당 컴포넌트에 띄우는 것을 고려) -->
     <div id="team-introduction" class="my-10">
       <h2>About TEAM</h2>
-      <p>
         <strong>Team AllDayLong</strong><br>
+      <p id="InText">
         : 하루종일 밤낮 가리지 않고 작업한다는 뜻
       <p>
         <strong>Members</strong><br>
@@ -31,64 +26,40 @@
         </ul>
       </p>
     </div>
-
-    <!-- 실제 TEST container -->
     <div id="practice-ocr" class="my-10">
-      <h2>TEST</h2>
+      <h2>Try OCRA by your image</h2>
+      <p id="InText"> Select image from your device and submit.</p>
 
-      <!-- Drag&Drop 기능 구현된 PC버전 -->
-      <div id="img-container-pc" class="pa-10 my-5" @change="onFileSelected">
-        <picture-input
-          ref="pictureInput"
-          accept="image/jpeg,image/png"
-          removable="true"
-          button-class="btn"
-          :custom-strings="{
-            upload: '<p>업로드를 지원하지 않는 기기입니다.</p>',
-            drag: '해당 화면을 클릭하거나<br>사진을 Drag&Drop 하세요.'
-          }"
-          @change="onChange">
-        </picture-input>
+      <!-- 샘플 리스트 container -->
+      <div class="pa-4">
+        <v-container id="sample-images" >
+          <div><img id="OcrSampleImages" src="" alt="ocr example"></div>
+        </v-container>
       </div>
 
-      <!-- 모바일 버전 -->
-      <div id="img-container-mobile" class="pa-4 my-5">
+      <!-- 실제 TEST container -->
+      <div id="testOCR" class="pa-4">
         <form @change="onFileSelected">
-          <v-container>
+          <!-- mobile 버전 -->
+          <mq-layout :mq="['sm', 'md']">
+          <v-container id="add-image">
             <input id="file-input" type="file" style="display: none">
             <label for="file-input">
-              <div style="padding: 20px">
-                <p class="how_to_do_OCR">
-                  해당 화면을 클릭하시면 이미지 업로드가 가능합니다.
-                </p>
-                <img id="ocrLogo" src="../assets/image/TryOCR.png">
-              </div>
+
+              <div class="mdi mdi-file-image-plus" id="img-container" style="padding: 10px"> image select</div>
             </label>
             </input>
           </v-container>
+          </mq-layout>
+
         </form>
       </div>
 
-      <!-- Submit 버튼 -->
-       <v-container id="submit-btn">
-        <input type="submit" value="Submit" @click="onUpload">
-       </v-container>
-
       <!-- OCR 결과 출력 -->
-      <div id=showResult class="pa-4 my-5">
-        <div class="ocrtext">
-          <div v-for="(text, index) in ocrtext" :key="index" class="user">
-
-            <p>{{ text }} </p><br>
-          </div>
-        </div>
-
-        <div class="images">
-          <br>
-          <div v-for="(imageurl, index2) in images" :key="index2" class="image">
-            <img :src=imageurl alt="imageOCR"/>
-          </div>
-        </div>
+      <div class="pa-4">
+        <v-container id="showResult">
+          OCR 결과(JSON) 출력 Container
+        </v-container>
       </div>
     </div>
   </div>
@@ -107,23 +78,11 @@ export default {
 
   data(){
     return{
-      selectedFile:null,
-      ocrtext: [],
-      images:[]
+      selectedFile:null
     };
   },
   components: {
     PictureInput
-  },
-  created() {
-    this.$http.get('/api/upload')
-      .then((res) => {
-        this.ocrtext = res.data.test;
-        this.images = res.data.test2;
-      })
-      .catch((err) => {
-        console.error(err);
-      });
   },
   methods:{
     onFileSelected(event){
@@ -142,7 +101,7 @@ export default {
       if (this.$refs.pictureInput.image) {
         console.log('Picture loaded.')
       } else {
-        console.log('FileReader API not supported: use the <form>')
+        console.log('FileReader API not supported: use the <form>, Luke!')
       }
     }
   }
@@ -150,17 +109,25 @@ export default {
 </script>
 
 <style>
+  input[type="file"] {
+    cursor: pointer;
+  }
   h2 {
     font-size: 1.5em;
   }
+  strong {
+    color: rgba(0, 0, 0, 1);
+  }
   ul {
+    color: rgba(0, 0, 0, 0.65);
     list-style: none;
   }
-
-  /* 입력 & 출력 div */
-  #img-container-pc, #img-container-mobile, #submit-btn, #showResult {
-    border: 3px solid lightskyblue;
+  #img-container {
+    border: 1px solid black;
+    border-radius: 4px;
     text-align: center;
+    width : 90%;
+    margin : 0 auto;
   }
 
   #ocrLogo {
@@ -171,18 +138,26 @@ export default {
     color: green;
     font-size: 1.5em;
   }
-
-  /* 출력 div */
-  .user {
-    float: left;
-    border: 2px solid black;
-    padding: 15px;
-    margin: 20px;
+  #submit-btn, #showResult {
+    border: 1px solid black;
+    height: 300px;
+    border-radius:4px;
+    text-align: center;
   }
-  .image{
-    float: left;
-    border: 2px solid black;
-    padding: 15px;
-    margin: 20px;
+  #sample-images {
+    border: 1px solid black;
+    width : 90%;
+    border-radius:4px;
+    margin: 0 auto;
+  }
+  #OcrSampleImages{
+    padding-top: 56.25%;
+  }
+  #showResult{
+    width: 90%;
+  }
+  #InText{
+    color: rgba(0, 0, 0, 0.65);
+    margin-left: 10px;
   }
 </style>
