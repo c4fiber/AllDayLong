@@ -51,26 +51,7 @@
             </input>
           </v-container>
           </mq-layout>
-<!--              &lt;!&ndash; 현재 통합중인 Drag & Drop 기능 추가버전 &ndash;&gt;-->
-<!--              <div id="img-container">-->
-<!--                <picture-input-->
-<!--                  ref="pictureInput"-->
-<!--                  width="600"-->
-<!--                  height="600"-->
-<!--                  margin="16"-->
-<!--                  accept="image/jpeg,image/png"-->
-<!--                  size="10"-->
-<!--                  button-class="btn"-->
-<!--                  :custom-strings="{-->
-<!--                  upload: '<h1>Bummer!</h1>',-->
-<!--                  drag: '해당 화면을 클릭하거나<br>사진을 Drag&Drop 하세요.'-->
-<!--                }"-->
-<!--                  @change="onChange">-->
-<!--                </picture-input>-->
-<!--              </div>-->
-          <!-- <v-container id="submit-btn">
-            <input type="submit" value="Submit(임시) - 최종적으로는 해당버튼 삭제예정" @click="onUpload"/>
-          </v-container> -->
+
         </form>
       </div>
 
