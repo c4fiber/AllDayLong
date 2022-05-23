@@ -38,6 +38,7 @@
       <p id="InText"> Select image from your device and submit.</p>
 
       <!-- Drag&Drop 기능 구현된 PC버전 -->
+      <mq-layout :mq="['lg']">
       <div id="img-container-pc" class="pa-10 my-5" @change="onFileSelected">
         <picture-input
           ref="pictureInput"
@@ -51,6 +52,7 @@
           @change="onChange">
         </picture-input>
       </div>
+      </mq-layout>
 
       <!-- 모바일 버전 -->
       <div id="img-container-mobile" class="pa-4 my-5">
