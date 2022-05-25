@@ -20,8 +20,9 @@
       <div id="img-container-pc" class="pa-10 my-5" @change="onFileSelected">
         <picture-input
           ref="pictureInput"
+          width="800"
+          height="800"
           accept="image/jpeg,image/png"
-          removable="true"
           button-class="btn"
           :custom-strings="{
             upload: '<p>업로드를 지원하지 않는 기기입니다.</p>',
