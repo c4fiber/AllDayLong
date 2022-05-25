@@ -68,7 +68,7 @@ export default {
 
     leftmenus: [
       {title: 'Home', icon: 'mdi-home', to: '/'},
-      {title: 'Developers', icon: 'mdi-account-multiple', to: '/users'},
+      {title: 'Developers', icon: 'mdi-account-multiple', to: '/developers'},
       {title: 'About', icon: 'mdi-help-box', to:'about'},
       {title: 'ORCA\'s Strength' , icon: 'mdi-information', to: '/create'},
       {title: 'Test(여기부턴 보류)', icon: 'mdi-plus-box', to: '/helloworld'},

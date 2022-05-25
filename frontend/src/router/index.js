@@ -4,8 +4,8 @@ import Router from 'vue-router'
 // Component List
 import HomeView from '@/components/HomeView'
 import AboutView from '@/components/AboutView'
-import UserAll from '@/components/UserAll'
-import UserInfo from '@/components/UserInfo'
+import DeveloperAll from '@/components/DeveloperAll'
+import DeveloperInfo from '@/components/DeveloperInfo'
 import HelloWorld from '@/components/HelloWorld'
 import CreateView from '@/components/CreateView'
 import ImageUpload from '@/components/ImageUpload'
@@ -27,14 +27,14 @@ export default new Router({
       component: AboutView
     },
     {
-      path: '/users',
-      name: 'Users',
-      component: UserAll
+      path: '/developers',
+      name: 'Developers',
+      component: DeveloperAll
     },
     {
-      path: '/users/:id',
-      name: 'UserInfo',
-      component: UserInfo
+      path: '/developers/:id',
+      name: 'DeveloperInfo',
+      component: DeveloperInfo
     },
     {
       path: '/helloworld',

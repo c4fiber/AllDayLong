@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const users = require('../data/users.json');
+const developers = require('../data/developers.json');
 
 /* GET login */
 router.get('/', function(req, res) {
@@ -9,9 +9,9 @@ router.get('/', function(req, res) {
     console.log(id)
 
     if (id) {
-        res.json({ user:users[id] })
+        res.json({ developer:developers[id] })
     } else {
-        res.json({ user:null })
+        res.json({ developer:null })
     }
 });
 
