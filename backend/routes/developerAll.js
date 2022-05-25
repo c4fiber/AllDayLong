@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-const users = require('../data/users.json');
+const developers = require('../data/developers.json');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.json({ users });
+  res.json({ developers });
 });
 
 module.exports = router;

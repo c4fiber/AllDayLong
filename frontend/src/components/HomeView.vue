@@ -12,26 +12,6 @@
       </p>
     </div>
 
-    <!-- 팀 소개 -->
-    <!-- 기존에 생성된 UserAll.vue(Developers 메뉴)에 이동하는 것을 고려중
-          (이에 추가로 내부 코드를 수정하여 아래의 내용을 해당 컴포넌트에 띄우는 것을 고려) -->
-    <div id="team-introduction" class="my-10">
-      <h2>About TEAM</h2>
-      <p>
-        <strong>Team AllDayLong</strong><br>
-        : 하루종일 밤낮 가리지 않고 작업한다는 뜻
-      <p>
-        <strong>Members</strong><br>
-        <ul>
-          <li><strong>팀장</strong> 신병철 : Project Manager, AI Model Developer</li>
-          <li><strong>팀원</strong> 이기원 : AI Model Developer, Back-end Developer</li>
-          <li><strong>팀원</strong> 황현섭 : Back-end Developer</li>
-          <li><strong>팀원</strong> 조진훈 : Front-end Developer</li>
-          <li><strong>팀원</strong> 조경서 : Front-end Developer</li>
-        </ul>
-      </p>
-    </div>
-
     <!-- 실제 TEST container -->
     <div id="practice-ocr" class="my-10">
       <h2>TEST</h2>
