@@ -6,7 +6,7 @@ cuda를 사용할 수 있는 gpu
 ````
 
 
-### 현재 dependancy 확인 중에 있음
+### 현재 dependency 확인 중에 있음
 ````
 pip install .
 ````
