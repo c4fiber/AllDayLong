@@ -7,7 +7,7 @@ import AboutView from '@/components/AboutView'
 import DeveloperAll from '@/components/DeveloperAll'
 import DeveloperInfo from '@/components/DeveloperInfo'
 import HelloWorld from '@/components/HelloWorld'
-import CreateView from '@/components/CreateView'
+import StrengthView from '@/components/StrengthView'
 import ImageUpload from '@/components/ImageUpload'
 import DisplayOCR from '@/components/DisplayOCR'
 
@@ -42,8 +42,8 @@ export default new Router({
       component: HelloWorld
     },
     {
-      path: '/create',
-      name: 'CreateView',
+      path: '/strength',
+      name: 'StrengthView',
       component: CreateView
     },
     {
