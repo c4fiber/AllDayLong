@@ -1,7 +1,9 @@
 # OCR-Attn
-system requirement:  
+### system requirement
+````
 python 3.7+  
-cuda를 사용할 수 있는 gpu  
+cuda를 사용할 수 있는 gpu
+````
 
 
 ### 현재 dependancy 확인 중에 있음
