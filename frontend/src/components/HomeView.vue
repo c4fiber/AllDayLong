@@ -56,13 +56,14 @@
 
       <!-- OCR 결과 출력 -->
       <div id=showResult class="pa-4 my-5">
+        <!-- 처리결과 텍스트 -->
         <div class="ocrtext">
           <div v-for="(text, index) in ocrtext" :key="index" class="user">
 
             <p>{{ text }} </p><br>
           </div>
         </div>
-
+        <!-- 처리결과 이미지 -->
         <div class="images">
           <br>
           <div v-for="(imageurl, index2) in images" :key="index2" class="image">
