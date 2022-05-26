@@ -1,17 +1,32 @@
 [
     {
-        "id": "james",
-        "password": "1234",
-        "name": "제임스"
+        "id": "c4fiber",
+        "password": "201511815",
+        "name": "신병철",
+        "role": "Project Manager, AI Model Developer"
     },
     {
-        "id": "donald",
-        "password": "0000",
-        "name": "도널드"
+        "id": "GnoonJo",
+        "password": "201510187",
+        "name": "조진훈",
+        "role": "Project Deputy Manager, Front-end Developer"
     },
     {
-        "id": "john",
-        "password": "9999",
-        "name": "존"
+        "id": "refrainfl",
+        "password": "201513125",
+        "name": "이기원",
+        "role": "AI Model Developer, Back-end Developer"
+    },
+    {
+        "id": "HyeonseobHwang",
+        "password": "201913045",
+        "name": "황현섭",
+        "role": "Back-end Developer, Database Developer"
+    },
+    {
+        "id": "Jokyungseo",
+        "password": "201513051",
+        "name": "조경서",
+        "role": "Front-end Developer"
     }
 ]
