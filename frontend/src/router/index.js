@@ -44,7 +44,7 @@ export default new Router({
     {
       path: '/strength',
       name: 'StrengthView',
-      component: CreateView
+      component: StrengthView
     },
     {
       path:'/upload',
