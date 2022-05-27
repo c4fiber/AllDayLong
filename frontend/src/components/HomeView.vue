@@ -98,25 +98,12 @@ export default {
       axios.post('http://localhost:3000/upload',fd)
         .then(this.test());
     },
-    methods: {
-      onFileSelected(event) {
-        this.selectedFile = event.target.files[0]
-      },
-      onUpload() {
-        var fd = new FormData();
-        fd.append('file', this.selectedFile)
-        axios.post('http://localhost:3000/upload', fd)
-          .then(res => {
-            console.log(res)
-          });
-      },
-      onChange() {
-        console.log('New picture selected!')
-        if (this.$refs.pictureInput.image) {
-          console.log('Picture loaded.')
-        } else {
-          console.log('FileReader API not supported: use the <form>')
-        }
+    onChange() {
+      console.log('New picture selected!')
+      if (this.$refs.pictureInput.image) {
+        console.log('Picture loaded.')
+      } else {
+        console.log('FileReader API not supported: use the <form>')
       }
     },
     test(){
