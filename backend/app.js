@@ -12,8 +12,8 @@ mongoose.connect(dbconfig.url + dbconfig.database);
 
 
 // Routers
-var userAllRouter = require('./routes/userAll');
-var userInfoRouter = require('./routes/userinfo');
+var developerAllRouter = require('./routes/developerAll');
+var developerInfoRouter = require('./routes/developerInfo');
 var uploadImageRouter = require('./routes/uploadImage');
 var app = express();
 
@@ -32,8 +32,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // routes
-app.use('/users', userAllRouter);
-app.use('/users/:id', userInfoRouter);
+app.use('/developers', developerAllRouter);
+app.use('/developers/:id', developerInfoRouter);
 app.use('/upload',uploadImageRouter);
 
 // catch 404 and forward to error handler
