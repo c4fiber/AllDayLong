@@ -62,6 +62,7 @@
       </div>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
@@ -97,12 +98,25 @@ export default {
       axios.post('http://localhost:3000/upload',fd)
         .then(this.test());
     },
-    onChange () {
-      console.log('New picture selected!')
-      if (this.$refs.pictureInput.image) {
-        console.log('Picture loaded.')
-      } else {
-        console.log('FileReader API not supported: use the <form>')
+    methods: {
+      onFileSelected(event) {
+        this.selectedFile = event.target.files[0]
+      },
+      onUpload() {
+        var fd = new FormData();
+        fd.append('file', this.selectedFile)
+        axios.post('http://localhost:3000/upload', fd)
+          .then(res => {
+            console.log(res)
+          });
+      },
+      onChange() {
+        console.log('New picture selected!')
+        if (this.$refs.pictureInput.image) {
+          console.log('Picture loaded.')
+        } else {
+          console.log('FileReader API not supported: use the <form>')
+        }
       }
     },
     test(){
@@ -124,7 +138,7 @@ export default {
       },3000);
     }
   }
-}
+
 </script>
 
 <style>
@@ -135,6 +149,10 @@ ul {
   list-style: none;
 }
 
+input[type="file"] {
+  cursor: pointer;
+}
+  
 /* 입력 파트 */
 #img-container-pc {
   border: 3px solid cornflowerblue;
@@ -163,5 +181,4 @@ ul {
   margin-top: 10px;
   width: 100%;
 }
-
 </style>
