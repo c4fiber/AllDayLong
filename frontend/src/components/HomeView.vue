@@ -25,11 +25,10 @@
       <h1 class="pl-3">TEST</h1>
       <div id="img-container-mobile" class="mt-2 mb-6">
         <form @change="onFileSelected">
-          <input id="file-input" type="file" style="display: none">
-          <label for="file-input">
+          <input id="img-select" type="file" style="display: none">
+          <label for="img-select">
             <div class="mdi mdi-file-image-plus pa-2" id="img-select-btn"> Image select </div>
           </label>
-          </input>
         </form>
       </div>
     </mq-layout>
@@ -46,29 +45,29 @@
     </mq-layout>
     <mq-layout :mq="['sm', 'md']">
       <h1 class="mt-6 pl-3">Result</h1>
-      <p style="font-size: 1.3em">Result will come out soon below.</p>
+      <p class="pl-3" style="font-size: 1.3em">Result will come out soon below.</p>
     </mq-layout>
 
     <!-- 처리결과 이미지 -->
     <div class="images">
-      <br>
-      <div v-for="(imageurl, index2) in images" :key="index2" class="image">
+      <div v-for="(imageurl, index) in images" :key="index" class="image">
         <img :src=imageurl alt="imageOCR"/>
       </div>
     </div>
 
     <!-- 처리결과 텍스트 -->
     <div class="ocrtext">
-      <div v-for="(text, index) in ocrtext" :key="index" class="user">
+      <div v-for="(text, index2) in ocrtext" :key="index2" class="resulttext">
         <p>{{ text }}</p><br>
       </div>
     </div>
+  </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
-import PictureInput from 'vue-picture-input'
+import PictureInput from 'vue-picture-input';
 
 export default {
   name: 'HomeView',
@@ -76,11 +75,11 @@ export default {
     msg: String
   },
 
-  data(){
-    return{
-      selectedFile:null,
+  data() {
+    return {
+      selectedFile: null,
       ocrtext: [],
-      images:[]
+      images: []
     };
   },
   components: {
@@ -89,82 +88,98 @@ export default {
   created() {
 
   },
-  methods:{
-    onFileSelected(event){
-      this.selectedFile=event.target.files[0]
+  methods: {
+    onFileSelected(event) {
+      this.selectedFile = event.target.files[0]
     },
-    onUpload(){
+    onUpload() {
       var fd = new FormData();
-      fd.append('file',this.selectedFile)
-      axios.post('http://localhost:3000/upload',fd)
+      fd.append('file', this.selectedFile)
+      axios.post('http://localhost:3000/upload', fd)
         .then(this.test());
     },
-    onChange () {
-      console.log('New picture selected!')
-      if (this.$refs.pictureInput.image) {
-        console.log('Picture loaded.')
-      } else {
-        console.log('FileReader API not supported: use the <form>')
+    methods: {
+      onFileSelected(event) {
+        this.selectedFile = event.target.files[0]
+      },
+      onUpload() {
+        var fd = new FormData();
+        fd.append('file', this.selectedFile)
+        axios.post('http://localhost:3000/upload', fd)
+          .then(res => {
+            console.log(res)
+          });
+      },
+      onChange() {
+        console.log('New picture selected!')
+        if (this.$refs.pictureInput.image) {
+          console.log('Picture loaded.')
+        } else {
+          console.log('FileReader API not supported: use the <form>')
+        }
       }
     },
-     test(){
-      this.timerfunc=setInterval(() =>{
-            this.$http.get('/api/upload')
-            .then((res) => {
+    test() {
+      this.timerfunc = setInterval(() => {
+        this.$http.get('/api/upload')
+          .then((res) => {
             this.ocrtext = res.data.test;
-            this.images=res.data.test2;
-            if(this.images[0]!=null){
-                clearInterval(this.timerfunc);
-                if(this.ocrtext[0]==null){
-                this.ocrtext[0]="No Text";
-                }
+            this.images = res.data.test2;
+            if (this.images[0] != null) {
+              clearInterval(this.timerfunc);
+              if (this.ocrtext[0] == null) {
+                this.ocrtext[0] = "No Text";
+              }
             }
-            })
-            .catch((err) => {
+          })
+          .catch((err) => {
             console.error(err);
-            });
-        	 },3000);
+          });
+      }, 3000);
     }
   }
 }
+
 </script>
 
 <style>
-  h1 {
-    color: cornflowerblue;
-  }
-  ul {
-    list-style: none;
-  }
+h1 {
+  color: cornflowerblue;
+}
+ul {
+  list-style: none;
+}
 
-  /* 입력 파트 */
-  #img-container-pc {
-    border: 3px solid cornflowerblue;
-    text-align: center;
-  }
-  #img-container-mobile, #submit-btn {
-    border: 3px solid cornflowerblue;
-    border-radius: 4px;
-    text-align: center;
-    width: 90%;
-    height: 46.5px;
-    margin: 0 auto;
-  }
-  #img-select-btn, #submit-btn {
-    font-size: 20px;
-  }
+input[type="file"] {
+  cursor: pointer;
+}
 
-  /* 출력 파트 */
-  .user {
-    float: left;
-    border: 3px solid cornflowerblue;
-    padding: 10px;
-    margin: 20px;
-  }
-  .image {
-    float: left;
-    border: 3px solid cornflowerblue;
-    padding: 10px;
-    margin: 20px;
-  }
+/* 입력 파트 */
+#img-container-pc {
+  border: 3px solid cornflowerblue;
+  text-align: center;
+}
+#img-container-mobile, #submit-btn {
+  border: 3px solid cornflowerblue;
+  border-radius: 4px;
+  text-align: center;
+  width: 90%;
+  height: 46.5px;
+  margin: 0 auto;
+}
+#img-select-btn, #submit-btn {
+  font-size: 20px;
+}
+#submit-btn:hover, #submit-btn:active {
+  background: lightgray;
+}
+
+/* 출력 파트 */
+.image, .resulttext {
+  float: left;
+  border: 3px solid cornflowerblue;
+  padding: 10px;
+  margin-top: 10px;
+  width: 100%;
+}
 </style>
