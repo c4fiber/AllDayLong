@@ -142,43 +142,43 @@ export default {
 </script>
 
 <style>
-h1 {
-  color: cornflowerblue;
-}
-ul {
-  list-style: none;
-}
+  h1 {
+    color: cornflowerblue;
+  }
+  ul {
+    list-style: none;
+  }
 
-input[type="file"] {
-  cursor: pointer;
-}
-  
-/* 입력 파트 */
-#img-container-pc {
-  border: 3px solid cornflowerblue;
-  text-align: center;
-}
-#img-container-mobile, #submit-btn {
-  border: 3px solid cornflowerblue;
-  border-radius: 4px;
-  text-align: center;
-  width: 90%;
-  height: 46.5px;
-  margin: 0 auto;
-}
-#img-select-btn, #submit-btn {
-  font-size: 20px;
-}
-#submit-btn:hover, #submit-btn:active {
-  background: lightgray;
-}
+  input[type="file"] {
+    cursor: pointer;
+  }
 
-/* 출력 파트 */
-.image, .resulttext {
-  float: left;
-  border: 3px solid cornflowerblue;
-  padding: 10px;
-  margin-top: 10px;
-  width: 100%;
-}
+  /* 입력 파트 */
+  #img-container-pc {
+    border: 3px solid cornflowerblue;
+    text-align: center;
+  }
+  #img-container-mobile, #submit-btn {
+    border: 3px solid cornflowerblue;
+    border-radius: 4px;
+    text-align: center;
+    width: 90%;
+    height: 46.5px;
+    margin: 0 auto;
+  }
+  #img-select-btn, #submit-btn {
+    font-size: 20px;
+  }
+  #submit-btn:hover, #submit-btn:active {
+    background: lightgray;
+  }
+
+  /* 출력 파트 */
+  .image, .resulttext {
+    float: left;
+    border: 3px solid cornflowerblue;
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+  }
 </style>
