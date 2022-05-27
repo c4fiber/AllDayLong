@@ -51,7 +51,7 @@
     <!-- 처리결과 이미지 -->
     <div class="images">
       <div v-for="(imageurl, index) in images" :key="index" class="image">
-        <img :src=imageurl alt="imageOCR"/>
+        <img :src=imageurl alt="imageOCR" style="width: 100%" />
       </div>
     </div>
 
@@ -138,7 +138,7 @@ export default {
       },3000);
     }
   }
-
+}
 </script>
 
 <style>
@@ -169,7 +169,8 @@ export default {
   #img-select-btn, #submit-btn {
     font-size: 20px;
   }
-  #submit-btn:hover, #submit-btn:active {
+  #img-select-btn:hover, #submit-btn:hover,
+  #img-select-btn:active, #submit-btn:active {
     background: lightgray;
   }
 
