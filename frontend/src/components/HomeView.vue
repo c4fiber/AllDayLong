@@ -25,11 +25,10 @@
       <h1 class="pl-3">TEST</h1>
       <div id="img-container-mobile" class="mt-2 mb-6">
         <form @change="onFileSelected">
-          <input id="file-input" type="file" style="display: none">
-          <label for="file-input">
+          <input id="img-select" type="file" style="display: none">
+          <label for="img-select">
             <div class="mdi mdi-file-image-plus pa-2" id="img-select-btn"> Image select </div>
           </label>
-          </input>
         </form>
       </div>
     </mq-layout>
@@ -46,20 +45,19 @@
     </mq-layout>
     <mq-layout :mq="['sm', 'md']">
       <h1 class="mt-6 pl-3">Result</h1>
-      <p style="font-size: 1.3em">Result will come out soon below.</p>
+      <p class="pl-3" style="font-size: 1.3em">Result will come out soon below.</p>
     </mq-layout>
 
     <!-- 처리결과 이미지 -->
     <div class="images">
-      <br>
-      <div v-for="(imageurl, index2) in images" :key="index2" class="image">
+      <div v-for="(imageurl, index) in images" :key="index" class="image">
         <img :src=imageurl alt="imageOCR"/>
       </div>
     </div>
 
     <!-- 처리결과 텍스트 -->
     <div class="ocrtext">
-      <div v-for="(text, index) in ocrtext" :key="index" class="user">
+      <div v-for="(text, index2) in ocrtext" :key="index2" class="resulttext">
         <p>{{ text }}</p><br>
       </div>
     </div>
@@ -68,7 +66,7 @@
 
 <script>
 import axios from 'axios';
-import PictureInput from 'vue-picture-input'
+import PictureInput from 'vue-picture-input';
 
 export default {
   name: 'HomeView',
@@ -153,18 +151,17 @@ ul {
 #img-select-btn, #submit-btn {
   font-size: 20px;
 }
+#submit-btn:hover, #submit-btn:active {
+  background: lightgray;
+}
 
 /* 출력 파트 */
-.user {
+.image, .resulttext {
   float: left;
   border: 3px solid cornflowerblue;
   padding: 10px;
-  margin: 20px;
+  margin-top: 10px;
+  width: 100%;
 }
-.image {
-  float: left;
-  border: 3px solid cornflowerblue;
-  padding: 10px;
-  margin: 20px;
-}
+
 </style>
