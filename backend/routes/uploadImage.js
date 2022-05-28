@@ -62,7 +62,7 @@ router.post('/',(req,file,res)=>{
         } else {
           console.log(req.file) ;
           var spawn = require('child_process').spawn;
-          var net = spawn('python',['./RunOCR.py',imagefolderpath + req.file.filename], {cwd: './ocr-modules/ocr-with-python'});
+          var net = spawn('python',['./RunOCR.py',imagefolderpath + req.file.filename], {cwd: './ocr-with-python'});
 
           net.stdout.on('data',function(data){
             console.log('not err');
