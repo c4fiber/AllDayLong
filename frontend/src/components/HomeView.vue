@@ -51,7 +51,7 @@
     <!-- 처리결과 이미지 -->
     <div class="images">
       <div v-for="(imageurl, index) in images" :key="index" class="image">
-        <img :src=imageurl alt="imageOCR"/>
+        <img :src=imageurl alt="imageOCR" style="width: 100%" />
       </div>
     </div>
 
@@ -94,48 +94,35 @@ export default {
     },
     onUpload() {
       var fd = new FormData();
-      fd.append('file', this.selectedFile)
-      axios.post('http://localhost:3000/upload', fd)
+      fd.append('file',this.selectedFile)
+      axios.post('http://localhost:3000/upload',fd)
         .then(this.test());
     },
-    methods: {
-      onFileSelected(event) {
-        this.selectedFile = event.target.files[0]
-      },
-      onUpload() {
-        var fd = new FormData();
-        fd.append('file', this.selectedFile)
-        axios.post('http://localhost:3000/upload', fd)
-          .then(res => {
-            console.log(res)
-          });
-      },
-      onChange() {
-        console.log('New picture selected!')
-        if (this.$refs.pictureInput.image) {
-          console.log('Picture loaded.')
-        } else {
-          console.log('FileReader API not supported: use the <form>')
-        }
+    onChange() {
+      console.log('New picture selected!')
+      if (this.$refs.pictureInput.image) {
+        console.log('Picture loaded.')
+      } else {
+        console.log('FileReader API not supported: use the <form>')
       }
     },
-    test() {
-      this.timerfunc = setInterval(() => {
+    test(){
+      this.timerfunc=setInterval(() =>{
         this.$http.get('/api/upload')
           .then((res) => {
             this.ocrtext = res.data.test;
-            this.images = res.data.test2;
-            if (this.images[0] != null) {
+            this.images=res.data.test2;
+            if(this.images[0]!=null){
               clearInterval(this.timerfunc);
-              if (this.ocrtext[0] == null) {
-                this.ocrtext[0] = "No Text";
+              if(this.ocrtext[0]==null){
+                this.ocrtext[0]="No Text";
               }
             }
           })
           .catch((err) => {
             console.error(err);
           });
-      }, 3000);
+      },3000);
     }
   }
 }
@@ -143,43 +130,44 @@ export default {
 </script>
 
 <style>
-h1 {
-  color: cornflowerblue;
-}
-ul {
-  list-style: none;
-}
+  h1 {
+    color: cornflowerblue;
+  }
+  ul {
+    list-style: none;
+  }
 
-input[type="file"] {
-  cursor: pointer;
-}
+  input[type="file"] {
+    cursor: pointer;
+  }
 
-/* 입력 파트 */
-#img-container-pc {
-  border: 3px solid cornflowerblue;
-  text-align: center;
-}
-#img-container-mobile, #submit-btn {
-  border: 3px solid cornflowerblue;
-  border-radius: 4px;
-  text-align: center;
-  width: 90%;
-  height: 46.5px;
-  margin: 0 auto;
-}
-#img-select-btn, #submit-btn {
-  font-size: 20px;
-}
-#submit-btn:hover, #submit-btn:active {
-  background: lightgray;
-}
+  /* 입력 파트 */
+  #img-container-pc {
+    border: 3px solid cornflowerblue;
+    text-align: center;
+  }
+  #img-container-mobile, #submit-btn {
+    border: 3px solid cornflowerblue;
+    border-radius: 4px;
+    text-align: center;
+    width: 90%;
+    height: 46.5px;
+    margin: 0 auto;
+  }
+  #img-select-btn, #submit-btn {
+    font-size: 20px;
+  }
+  #img-select-btn:hover, #submit-btn:hover,
+  #img-select-btn:active, #submit-btn:active {
+    background: lightgray;
+  }
 
-/* 출력 파트 */
-.image, .resulttext {
-  float: left;
-  border: 3px solid cornflowerblue;
-  padding: 10px;
-  margin-top: 10px;
-  width: 100%;
-}
+  /* 출력 파트 */
+  .image, .resulttext {
+    float: left;
+    border: 3px solid cornflowerblue;
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+  }
 </style>

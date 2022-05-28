@@ -25,21 +25,21 @@
       mobile-breakpoint="960"
     >
       <!-- 메뉴 리스트 -->
-       <v-list>
-         <v-list-item
-           v-for="leftmenu in leftmenus"
-           :key="leftmenu.title"
-           link
-           :to="leftmenu.to"
-         >
-           <v-list-item-icon>
-             <v-icon v-text="leftmenu.icon"></v-icon>
-            </v-list-item-icon>
-           <v-list-item-content>
-             <v-list-item-title v-text="leftmenu.title"></v-list-item-title>
-           </v-list-item-content>
-         </v-list-item>
-       </v-list>
+      <v-list>
+        <v-list-item
+          v-for="leftmenu in leftmenus"
+          :key="leftmenu.title"
+          link
+          :to="leftmenu.to"
+        >
+          <v-list-item-icon>
+            <v-icon v-text="leftmenu.icon"></v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title v-text="leftmenu.title"></v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
     </v-navigation-drawer>
 
     <!-- 메인 content 위치 -->
