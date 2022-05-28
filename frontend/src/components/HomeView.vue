@@ -75,11 +75,11 @@ export default {
     msg: String
   },
 
-  data(){
-    return{
-      selectedFile:null,
+  data() {
+    return {
+      selectedFile: null,
       ocrtext: [],
-      images:[]
+      images: []
     };
   },
   components: {
@@ -88,11 +88,11 @@ export default {
   created() {
 
   },
-  methods:{
-    onFileSelected(event){
-      this.selectedFile=event.target.files[0]
+  methods: {
+    onFileSelected(event) {
+      this.selectedFile = event.target.files[0]
     },
-    onUpload(){
+    onUpload() {
       var fd = new FormData();
       fd.append('file',this.selectedFile)
       axios.post('http://localhost:3000/upload',fd)
@@ -126,6 +126,7 @@ export default {
     }
   }
 }
+
 </script>
 
 <style>
