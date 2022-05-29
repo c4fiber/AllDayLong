@@ -4,8 +4,7 @@ var imgModel = require('../dbschema/schema');
 var multer = require('multer');
 var imagebaseURL = "http://localhost:3000/uploadedImages/";
 var imagefolderpath = "../../public/uploadedImages/";
-var jsonfolderpath ="../public/uploadedImages/";
-
+var jsonfolderpath ="../public/uploadedImages/"
 let testfilename;
 //image upload
 
@@ -60,20 +59,20 @@ router.post('/',(req,file,res)=>{
           return console.log("please select a file") ;
         } else {
           console.log(req.file) ;
-//          var spawn = require('child_process').spawn;
-//          var net = spawn('python',['./RunOCREngine.py',imagefolderpath + req.file.filename], {cwd: './ocr-modules/OCR-Attn'});
-//
-//          net.stdout.on('data',function(data){
-//            console.log('not err');
-//          })
-//          net.stderr.on('data',function(data){
-//            console.log('###'+ data);
-//            console.log('-------------------');
-//          })
-//          net.on('exit', function(){
-//            testfilename=req.file.filename;
-//            console.log(testfilename);
-//          });
+          var spawn = require('child_process').spawn;
+          var net = spawn('python',['./RunOCREngine.py',imagefolderpath + req.file.filename], {cwd: './ocr-modules/OCR-Attn'});
+
+          net.stdout.on('data',function(data){
+            console.log('not err');
+          })
+          net.stderr.on('data',function(data){
+            console.log('err occured: '+ data);
+            console.log('-------------------');
+          })
+          net.on('exit', function(){
+            testfilename=req.file.filename;
+            console.log(testfilename);
+          });
         }
       }
     });

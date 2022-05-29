@@ -41,7 +41,7 @@
         <picture-input
           ref="pictureInput"
           accept="image/jpeg,image/png"
-          hideChangeButton="true"
+          removable="true"
           button-class="btn"
           :custom-strings="{
             upload: '<p>업로드를 지원하지 않는 기기입니다.</p>',
@@ -137,7 +137,7 @@ export default {
       }
     },
      test(){
-      this.timerfunc=setInterval(() =>{
+      this.timerfunc=setInterval(() =>{ 
             this.$http.get('/api/upload')
             .then((res) => {
             this.ocrtext = res.data.test;
@@ -147,7 +147,7 @@ export default {
                 if(this.ocrtext[0]==null){
                 this.ocrtext[0]="No Text";
                 }
-
+                
             }
             })
             .catch((err) => {
