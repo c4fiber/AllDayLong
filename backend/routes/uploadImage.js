@@ -15,7 +15,9 @@ var storage = multer.diskStorage({
   },
   filename: function(req,file,cb){
     var date = Date.now();
-    var filename = date +'-'+ file.originalname;
+    var basename= Buffer.from(file.originalname,"utf8").toString('base64');
+    var path=require("path");
+    var filename = date +'-'+ basename+path.extname(file.originalname);
     cb(null,filename);
 
     var newimagedata = new imgModel({
