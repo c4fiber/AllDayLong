@@ -34,5 +34,7 @@ out/
 
 
 ### OCR Module test ###
-**/test
+**/test/
 *.pyc
+.idea/
+
