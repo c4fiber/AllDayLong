@@ -15,7 +15,7 @@ def OCREngine(image):
     opt.detect_trained_model = f"{path_abs}/models/craft_mlt_25k.pth"
     opt.detect_result_folder = f"{path_abs}/images/box/"
     opt.recognize_image_folder = f"{path_abs}/images/box/"
-    opt.recognize_saved_model = f"{path_abs}/models/TPS-VGG-BiLSTM-Attn.pth"
+    opt.recognize_saved_model = f"{path_abs}/models/custom_htr.pth"
     opt.recognize_Transformation = "TPS"
     opt.recognize_FeatureExtraction = "VGG"
     opt.recognize_SequenceModeling = "BiLSTM"

@@ -1,6 +1,6 @@
 **/node_modules/
 **/npm*/
-**/__pycache__/
+
 
 ### STS ###
 .apt_generated
@@ -31,3 +31,10 @@ out/
 
 ### VS Code ###
 .vscode/
+
+
+### OCR Module test ###
+**/test/
+*.pyc
+.idea/
+
