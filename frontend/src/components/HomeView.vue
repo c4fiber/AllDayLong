@@ -153,7 +153,7 @@
   }
 
   ul {
-    color: rgba(0, 0, 0, 0.65); // 추가된 부분
+    color: rgba(0, 0, 0, 0.65);
     list-style: none;
   }
 
