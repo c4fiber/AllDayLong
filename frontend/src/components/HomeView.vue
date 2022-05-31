@@ -36,12 +36,17 @@
     <div id="practice-ocr" class="my-10">
       <h2>Try ORCA by your image</h2>
       <p id="InText"> Select image from your device and submit.</p>
-    </div>
 
     <!-- Drag&Drop 기능 구현된 PC버전 -->
     <mq-layout :mq="['lg']">
-      <div id="img-container" class="pa-10 my-5" @change="onFileSelected">
-        <picture-input ref="pictureInput" accept="image/jpeg,image/png" removable="true" button-class="btn"
+      <div id="img-container-pc" class="pa-10 my-5" @change="onFileSelected">
+        <picture-input
+          ref="pictureInput"
+          width="800"
+          height="800"
+          accept="image/jpeg,image/png"
+          hideChangeButton="true"
+          button-class="btn"
           :custom-strings="{
             upload: '<p>업로드를 지원하지 않는 기기입니다.</p>',
             drag: '해당 화면을 클릭하거나<br>사진을 Drag&Drop 하세요.'
@@ -160,7 +165,7 @@
   input[type="file"] {
     cursor: pointer;
   }
-
+  
   /* 입력 & 출력 div */
   /* 기존 버전 */
   #img-container-pc,
