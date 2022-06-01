@@ -4,6 +4,9 @@ import LIST2JSON
 import DrawTextBox
 from ocr import OCR
 from types import SimpleNamespace
+import warnings
+
+warnings.filterwarnings("ignore", category=UserWarning, module="torch.nn.functional")
 
 
 def OCREngine(image):
@@ -24,9 +27,13 @@ def OCREngine(image):
     start = OCR(opt)
     result = start.run(image)
 
-    print(result)
+    print("#Model :", opt.detect_trained_model,
+          "\n Network Model :", opt.recognize_Transformation, opt.recognize_FeatureExtraction,
+          opt.recognize_SequenceModeling, opt.recognize_Prediction,
+          "\n Results :\n", result)
+
     json_path = os.path.dirname(image) + "/" + os.path.basename(image) + ".json"
-    LIST2JSON.tojson(result, json_path)
+    LIST2JSON.tojsonsingle(result, json_path)
     DrawTextBox.Draw(image, result)
 
 
