@@ -76,6 +76,6 @@ def OCREngine(image):
 
 
 if __name__ == '__main__':
-    # image_path = sys.argv[1]  # 명령행 인자
-    # OCREngine(image_path)
-    OCREngine('C:/Users/Fair/PycharmProjects/Module/OCR-Attn/test/demo.png')
+    image_path = sys.argv[1]  # 명령행 인자
+    OCREngine(image_path)
+    # OCREngine('C:/Users/Fair/PycharmProjects/Module/OCR-Attn/test/demo.png')
