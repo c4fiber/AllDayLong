@@ -116,14 +116,7 @@ export default {
     PictureInput
   },
   created() {
-    this.$http.get('/api/upload')
-      .then((res) => {
-        this.ocrtext = res.data.test;
-        this.images = res.data.test2;
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+
   },
   methods:{
     onFileSelected(event){
@@ -133,9 +126,7 @@ export default {
       var fd = new FormData();
       fd.append('file',this.selectedFile)
       axios.post('http://localhost:3000/upload',fd)
-        .then(res =>{
-          console.log(res)
-        });
+        .then(this.test());
     },
     onChange () {
       console.log('New picture selected!')
@@ -144,6 +135,25 @@ export default {
       } else {
         console.log('FileReader API not supported: use the <form>')
       }
+    },
+     test(){
+      this.timerfunc=setInterval(() =>{ 
+            this.$http.get('/api/upload')
+            .then((res) => {
+            this.ocrtext = res.data.test;
+            this.images=res.data.test2;
+            if(this.images[0]!=null){
+                clearInterval(this.timerfunc);
+                if(this.ocrtext[0]==null){
+                this.ocrtext[0]="No Text";
+                }
+                
+            }
+            })
+            .catch((err) => {
+            console.error(err);
+            });
+        	 },3000);
     }
   }
 }
