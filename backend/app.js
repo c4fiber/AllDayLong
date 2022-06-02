@@ -8,7 +8,7 @@ var dbconfig = require('./config/db');
 var mongoose = require('mongoose');
 
 //dbconnection
-mongoose.connect(dbconfig.url + dbconfig.database);
+// mongoose.connect(dbconfig.url + dbconfig.database); //---- mongoDB connection
 
 
 // Routers

@@ -19,19 +19,19 @@ var storage = multer.diskStorage({
     var filename = date +'-'+ basename+path.extname(file.originalname);
     cb(null,filename);
 
-    var newimagedata = new imgModel({
-      name:filename,
-      imgpath:imagebaseURL + filename,
-      syncTime:date,
-      imgfolderpath: imagefolderpath + file.originalname
-    });
-    newimagedata.save(function(error,data){
-      if(error){
-        console.log(error);
-      }else{
-        console.log('Saved!');
-      }
-    });
+    // var newimagedata = new imgModel({
+    //   name:filename,
+    //   imgpath:imagebaseURL + filename,
+    //   syncTime:date,
+    //   imgfolderpath: imagefolderpath + file.originalname
+    // });
+    // newimagedata.save(function(error,data){
+    //   if(error){
+    //     console.log(error);
+    //   }else{
+    //     console.log('Saved!');
+    //   }
+    // });   ///-------->save data in MongoDB 
   }
 });
 
