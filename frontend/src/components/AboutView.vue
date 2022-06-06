@@ -1,49 +1,144 @@
 <template>
   <div class="about">
-    <h2>OCR Introduction</h2>
-    <p>
-      OCR(Optical Character Recognition)은 이미지 속의 텍스트를 실제 문자 텍스트 형태로 변환시키는 기술이다. Text Detection 단계와 Text Recognition 단계로
-      구성되어 있다.
-      대표적인 OCR 엔진으로는 EasyOCR, Tesseract OCR이 있다.
-    </p>
-    <h2>Related OCR Technology Status</h2>
-      <h4><span style="color:#009dff;">Tesseract OCR</span></h4>
-    <p>
-      특징: HP 연구소에서 개발한 오픈소스 OCR, 높은 정확도
-      문제점: 한글 인식률이 저조, 자체적인 인식률 개선에 한계가 존재
-    </p>
-      <h4><span style="color:#2db245;">NAVER CLOVA</span></h4>
-    <p>
-      특징: 배열된 문자와 읽는 순서를 이용하여 AI 모델을 바탕으로 인식
-      문제점: 지속적인 비용 지불, 개발자를 대상으로 하는 서비스로 접근성이 낮음
-    </p>
-    <h2>Development Background</h2>
-    <p>
-      영어 위주의 OCR 기술은 한글의 인식률이 저조하고, 개발자 위주의 서비스를 하여 접근성이 떨어지는 단점들이 존재한다.
-    </p>
-    <h2>Then what is <span style="color:#3cb1f9;">ORCA</span></h2>
-    <p>
-      <span style="color:#3cb1f9;">ORCA</span>는 위에 나열한 문제점들을 보완하여 누구나 쉽게 체험 가능한 한국어 OCR 모델이다.
-    </p>
-    <!-- <p>
-      <span style="color:#3cb1f9;">ORCA</span>는 기존의 OCR 모델이 영어와 숫자에 중점을 두고, 한글의 경우 인쇄글자와 문서에만 서비스를 제공하며 그마저도 인식 정확도가 낮은 문제점들을 보완, 개선한 새로운 한국어 OCR 모델이다.
-    </p> -->
-    <h2>Applied OCR model</h2>
-    <p>
-      ORCA은 기존 OCR 데이터의 특징을 추출하여 패턴을 파악하는 CNN(Convolution Neural Network)과 이전 단계의 학습 데이터를 현재 학습에 반영시키는 RNN(Recurrent
-      Neural Network)을 합친
-    </p>
-    <h2>사용 TOOLS</h2> 
-    <img id = "Tool_img" src="@/assets/image/Applied_Tool.png" alt="">
+    <!-- OCR 개념 -->
+    <div class="aboutOCR">
+      <h1>About OCR</h1>
+      <p>
+        : OCR(Optical Character Recognition)은 이미지 파일 속 텍스트를 실제 문자 텍스트 형태로 변환시키는 기술이다.<br>
+        문자 탐지(Text Detection) 단계와 문자 인식(Text Recognition) 단계로 구성되어 있다.
+      </p>
+    </div>
+   <div class="OCRimg">
+     <img id="OCR" src="@/assets/image/OCR.png" alt="OCR">
+   </div>
+
+    <!-- OCR 관련 주요 기술 -->
+    <div class="existingOCR">
+      <h1>Existing OCR SW</h1>
+
+      <div class="globalOCR">
+        <h2>Tesseract OCR, Easy OCR</h2>
+        <p>
+          : 세계적으로 많이 사용되는 오픈소스 OCR 모델
+        </p>
+        <p class="problem">
+          : 영어와 숫자 인식을 중점으로 개발되어 한국어의 인식률이 매우 저조
+        </p>
+        <img id="TesseractOCR" src="@/assets/image/TesseractOCR.png" alt="TesseractOCR">
+        <img id="EasyOCR" src="@/assets/image/EasyOCR.png" alt="EasyOCR">
+      </div>
+
+      <div class="koreanOCR">
+        <h2>CLOVA OCR, SynapSoft OCR</h2>
+        <p>
+          : 높은 수준의 한국어 인식률을 보유한 OCR 모델
+        </p>
+        <p class="problem">
+          : 접근성이 낮음<br>
+          : (CLOVA) 개발자를 대상으로 서비스 제공, 비용 지출 요구
+        </p>
+        <img id="ClovaOCR" src="@/assets/image/ClovaOCR.png" alt="ClovaOCR">
+        <img id="SynapOCR" src="@/assets/image/SynapOCR.png" alt="SynapOCR">
+        <br><br>
+        <h3>그래서 저희는 위의 문제점(한국어 인식률, 접근성, 비용)을 개선한 새로운 OCR SW인 <span>ORCA</span>를 개발했습니다.</h3>
+      </div>
+    </div>
+
+    <!-- 사용 Tools -->
+      <div class="usedTools">
+        <h1>Used Tools</h1>
+        <table>
+          <th class="part">파트</th>
+          <th colspan="2">사용 Tool</th>
+          <tr class="UI">
+            <td class="part">사용자 인터페이스</td>
+            <td>Vue.js</td>
+            <td class="img"><img id="Vue" src="@/assets/image/Vue.png" alt="Vue"></td>
+          </tr>
+          <tr class="server">
+            <td class="part">웹 서버</td>
+            <td>node.js Express</td>
+            <td class="img"><img id="nodeExpress" src="@/assets/image/nodeExpress.png" alt="nodeExpress"></td>
+          </tr>
+          <tr class="database">
+            <td class="part">데이터베이스</td>
+            <td>mongoDB</td>
+            <td class="img"><img id="mongoDB" src="@/assets/image/mongoDB.png" alt="mongoDB"></td>
+          </tr>
+          <tr class="machine-learning">
+            <td class="part">머신러닝</td>
+            <td>Pytorch</td>
+            <td class="img"><img id="Pytorch" src="@/assets/image/Pytorch.png" alt="Pytorch"></td>
+          </tr>
+        </table>
+      </div>
   </div>
 </template>
 <style>
-  p{
-    color: rgba(0, 0, 0, 0.8);
+  /* Font CSS */
+  .about {
+    font-size: 1.3em;
   }
-  #Tool_img{
+  h1, span {
+    color: cornflowerblue;
+  }
+  span {
+    font-weight: bold;
+    font-style: italic;
+  }
+  .problem {
+    color: red;
+    font-weight: bold;
+  }
+
+  /* div CSS */
+  .aboutOCR, .existingOCR, .globalOCR, .koreanOCR, .usedTools {
+    float: left;
+  }
+  .OCRimg {
+    float: right;
+    width: 30%;
+    margin-top: 10px;
+  }
+  .aboutOCR {
+    width: 70%;
+  }
+  .existingOCR {
+    clear: both;
+  }
+  .globalOCR, .koreanOCR{
+    margin-bottom: 20px;
+  }
+  .usedTools {
+    margin-top: 20px;
+  }
+
+  /* image CSS */
+  #TesseractOCR, #EasyOCR, #ClovaOCR, #SynapOCR {
+    margin: 0px 20px 20px 20px;
+  }
+  #Vue, #nodeExpress, #mongoDB, #Pytorch {
+    width: 30%;
+    height: 50%;
+  }
+
+  /* Table CSS */
+  table, th, tr, td {
+    border: 3px solid black;
+    border-collapse: collapse;
+  }
+
+  table {
+    margin: 10px 0px 30px 0px;
+    text-align: center;
+  }
+  th.part {
+    width: 20%;
+  }
+  td.part {
+    font-weight: bold;
+  }
+  td.img {
     width: 60%;
-    height: 300px;
-    margin: 0 20%;
-}
+  }
 </style>
