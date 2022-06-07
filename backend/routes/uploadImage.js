@@ -3,7 +3,8 @@ var router = express.Router();
 var imgModel = require('../dbschema/schema');
 var multer = require('multer');
 var imagebaseURL = "http://localhost:3000/uploadedImages/";
-var imagefolderpath = "../public/uploadedImages/";
+var imagefolderpath = "../../public/uploadedImages/";
+var jsonfolderpath ="../public/uploadedImages/"
 
 let testfilename;
 //image upload
@@ -16,7 +17,6 @@ var storage = multer.diskStorage({
     var date = Date.now();
     var basename = Buffer.from(file.originalname,"utf8").toString('base64');
     var path = require("path");
-
     var filename = date +'-'+ basename + path.extname(file.originalname);
 
     cb(null,filename);
@@ -62,7 +62,7 @@ router.post('/',(req,file,res)=>{
         } else {
           console.log(req.file) ;
           var spawn = require('child_process').spawn;
-          var net = spawn('python',['./RunOCR.py',imagefolderpath + req.file.filename], {cwd: './ocr-with-python'});
+          var net = spawn('python',['./RunOCREngine.py',imagefolderpath + req.file.filename], {cwd: './ocr-modules/OCR-Attn'});
 
           net.stdout.on('data',function(data){
             console.log('not err');
@@ -84,7 +84,7 @@ router.post('/',(req,file,res)=>{
 // Get 관련
 
 router.get('/',(req,res,next)=>{
-  var test = require(imagefolderpath+testfilename+".json");
+  var test = require(jsonfolderpath+testfilename+".json");
   var test2=[imagebaseURL+"ocred_"+testfilename];
   res.json({test,test2});
  
