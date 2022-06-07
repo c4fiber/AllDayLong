@@ -71,8 +71,6 @@ export default {
       {title: 'Developers', icon: 'mdi-account-multiple', to: '/developers'},
       {title: 'About', icon: 'mdi-help-box', to:'about'},
       {title: 'ORCA\'s Strength' , icon: 'mdi-information', to: '/strength'},
-      {title: 'ImageUpload(임시)', icon: 'mdi-image-plus', to: '/upload'},
-      {title: 'DisplayOCR(임시)', icon: 'mdi-cast-variant', to: '/display'},
     ]
   })
 }
