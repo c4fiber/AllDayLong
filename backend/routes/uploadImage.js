@@ -5,6 +5,7 @@ var multer = require('multer');
 var imagebaseURL = "http://localhost:3000/uploadedImages/";
 var imagefolderpath = "../../public/uploadedImages/";
 var jsonfolderpath ="../public/uploadedImages/"
+
 let testfilename;
 //image upload
 
@@ -14,9 +15,9 @@ var storage = multer.diskStorage({
   },
   filename: function(req,file,cb){
     var date = Date.now();
-    var basename= Buffer.from(file.originalname,"utf8").toString('base64');
-    var path=require("path");
-    var filename = date +'-'+ basename+path.extname(file.originalname);
+    var basename = Buffer.from(file.originalname,"utf8").toString('base64');
+    var path = require("path");
+    var filename = date +'-'+ basename + path.extname(file.originalname);
     cb(null,filename);
 
     var newimagedata = new imgModel({
