@@ -4,8 +4,8 @@
     <div class="aboutOCR">
       <h1>About OCR</h1>
       <p>
-        : OCR(Optical Character Recognition)은 이미지 파일 속 텍스트를 실제 문자 텍스트 형태로 변환시키는 기술이다.<br>
-        문자 탐지(Text Detection) 단계와 문자 인식(Text Recognition) 단계로 구성되어 있다.
+        : OCR(Optical Character Recognition)은 이미지 파일 속 텍스트를 실제 문자 텍스트 형태로 변환시키는 기술입니다.<br>
+        문자 탐지(Text Detection) 단계와 문자 인식(Text Recognition) 단계로 구성되어 있습니다.
       </p>
     </div>
    <div class="OCRimg">
@@ -127,7 +127,6 @@
     border: 3px solid black;
     border-collapse: collapse;
   }
-
   table {
     margin: 10px 0px 30px 0px;
     text-align: center;
