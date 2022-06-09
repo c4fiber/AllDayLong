@@ -13,7 +13,7 @@
           button-class="btn"
           :custom-strings="{
           upload: '<p>업로드를 지원하지 않는 기기입니다.</p>',
-          drag: '해당 화면을 클릭하여 사진을 입력하세요.'
+          drag: '해당 화면을 클릭하여<br>사진을 입력하세요.'
         }"
           @change="onChange">
         </picture-input>
