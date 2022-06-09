@@ -27,7 +27,7 @@
         <form @change="onFileSelected">
           <input id="img-select" type="file" style="display: none">
           <label for="img-select">
-            <div class="mdi mdi-file-image-plus pa-2" id="img-select-btn"> Image select </div>
+            <div class="mdi mdi-file-image-plus pa-2" id="img-select-btn"> {{ fileName }} </div>
           </label>
         </form>
       </div>
@@ -79,18 +79,22 @@ export default {
     return {
       selectedFile: null,
       ocrtext: [],
-      images: []
+      images: [],
+      fileName: "Image Select"
     };
   },
   components: {
     PictureInput
   },
-  created() {
-
-  },
   methods: {
     onFileSelected(event) {
       this.selectedFile = event.target.files[0]
+
+      if(event.target.files[0] == null) {
+        this.fileName = "Image Select";
+      } else {
+        this.fileName = event.target.files[0].name;
+      }
     },
     onUpload() {
       var fd = new FormData();
