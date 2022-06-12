@@ -1,6 +1,4 @@
-**/node_modules/
-**/npm*/
-**/__pycache__/
+
 
 ### STS ###
 .apt_generated
@@ -31,3 +29,10 @@ out/
 
 ### VS Code ###
 .vscode/
+
+
+## CUSTOM ##
+node_modules/
+npm*/
+__pycache__/
+*.pyc
