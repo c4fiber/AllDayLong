@@ -8,8 +8,6 @@
 .settings
 .springBeans
 .sts4-cache
-!**/src/main/**/bin/
-!**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
 .idea
@@ -36,3 +34,4 @@ node_modules/
 npm*/
 __pycache__/
 *.pyc
+uploadedImages

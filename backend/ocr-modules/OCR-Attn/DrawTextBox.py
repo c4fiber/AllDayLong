@@ -19,7 +19,7 @@ def Draw(image, result):
         x1 = result['text'][i]['location'][2]
         x2 = result['text'][i]['location'][3]
 
-        color_idx = random.randint(0, 255)
+        color_idx = random.randint(0, 254)
         color = [int(c) for c in COLORS[color_idx]]
         img = cv2.rectangle(img, (x1, y1), (x2, y2), color, 2)
 
